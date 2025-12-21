@@ -197,9 +197,6 @@ export default function VolunteerForm() {
                   <p className="mt-1 text-sm text-red-600">{errors.isAdult}</p>
                 )}
               </div>
-              <p className="text-sm text-gray-600">
-                Volunteers meet every other Sunday between 9:30am - 1:00pm.
-              </p>
               <button
                 type="submit"
                 className="bg-[#0720ff] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#0618dd] transition-colors"
@@ -209,14 +206,14 @@ export default function VolunteerForm() {
             </form>
           </div>
 
-          {/* Join Us Sidebar */}
+          {/* Make a Difference Sidebar */}
           <div className="lg:w-80">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-1 h-8 bg-[#0720ff]"></div>
-              <h3 className="text-2xl font-bold">Join Us</h3>
+              <h3 className="text-2xl font-bold">Make a Difference!</h3>
             </div>
             <p className="text-gray-700 mb-5">
-              Extra hands are always appreciated! Donate your time and become a part of the foundation!
+              Care & Share Foundation bi-weekly volunteering is every other Sunday between 9:30am and 1:00pm in Central Jersey
             </p>
             <div className="flex items-center gap-3">
               <a
