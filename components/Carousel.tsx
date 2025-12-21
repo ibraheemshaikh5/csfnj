@@ -38,7 +38,7 @@ export default function Carousel() {
   useEffect(() => {
     const interval = setInterval(() => {
       handleNext();
-    }, 7000);
+    }, 12000);
 
     return () => clearInterval(interval);
   }, [handleNext]);
@@ -82,28 +82,31 @@ export default function Carousel() {
       {/* Light overlay for text visibility without darkening too much */}
       <div className="absolute inset-0 bg-black/10 z-10" />
 
+      {/* Persistent haze behind text - sized to cover the text area */}
+      <div className="absolute top-16 left-8 md:top-24 md:left-12 lg:top-32 lg:left-16 z-15 w-[90%] max-w-3xl h-auto">
+        <div className="backdrop-blur-[2px] bg-gradient-to-r from-black/20 via-black/15 to-transparent p-8 rounded-lg">
+          <div className="bg-gradient-to-b from-black/10 via-black/5 to-transparent rounded-lg">
+            <div className="h-[120px] md:h-[150px] lg:h-[180px]"></div>
+          </div>
+        </div>
+      </div>
+
       {/* Text Overlays */}
       {slides.map((slide, index) => (
         <div
           key={`text-${index}`}
-          className={`absolute inset-0 z-20 transition-opacity duration-1000 ease-in-out ${
+          className={`absolute inset-0 z-20 transition-opacity duration-1000 ease-in-out flex flex-col items-start justify-start pt-16 pl-8 md:pt-24 md:pl-12 lg:pt-32 lg:pl-16 ${
             index === currentIndex ? 'opacity-100' : 'opacity-0'
-          } ${
-            index === 0 
-              ? 'flex flex-col items-start justify-start pt-12 pl-8 md:pt-16 md:pl-12 lg:pt-20 lg:pl-16' 
-              : 'flex flex-col items-center justify-center px-4 text-center'
           }`}
         >
-          <h1 className={`text-white font-bold text-4xl md:text-5xl lg:text-6xl mb-4 md:mb-6 drop-shadow-2xl ${
-            index === 0 ? 'text-left' : 'text-center'
-          }`}>
-            {slide.title}
-          </h1>
-          <p className={`text-white text-lg md:text-xl lg:text-2xl drop-shadow-xl font-light max-w-4xl ${
-            index === 0 ? 'text-center self-center' : 'text-center'
-          }`}>
-            {slide.subtitle}
-          </p>
+          <div className="px-8 py-6 max-w-3xl">
+            <h1 className="text-white font-bold text-4xl md:text-5xl lg:text-6xl mb-3 md:mb-4 drop-shadow-2xl text-left">
+              {slide.title}
+            </h1>
+            <p className="text-white text-lg md:text-xl lg:text-2xl drop-shadow-xl font-light max-w-2xl text-left">
+              {slide.subtitle}
+            </p>
+          </div>
         </div>
       ))}
 
