@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 
 const slides = [
@@ -27,21 +27,21 @@ export default function Carousel() {
   const [showLeftButton, setShowLeftButton] = useState(false);
   const [showRightButton, setShowRightButton] = useState(false);
 
+  const handleNext = useCallback(() => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
+      setIsTransitioning(false);
+    }, 500);
+  }, []);
+
   useEffect(() => {
     const interval = setInterval(() => {
       handleNext();
     }, 7000);
 
     return () => clearInterval(interval);
-  }, [currentIndex]);
-
-  const handleNext = () => {
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
-      setIsTransitioning(false);
-    }, 500);
-  };
+  }, [handleNext]);
 
   const handlePrev = () => {
     setIsTransitioning(true);
