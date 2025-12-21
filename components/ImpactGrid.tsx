@@ -1,35 +1,90 @@
-interface ImpactItem {
-  title: string;
-  description: string;
-}
-
-const impactItems: ImpactItem[] = [
-  { title: 'Funeral Assistance', description: 'Provide respectful funeral services to needy Muslims free of cost.' },
-  { title: 'Food the Hungry', description: '750+ meals distributed regularly to those in need across New Jersey.' },
-  { title: 'Zakat Distribution', description: 'Organized zakat distribution to eligible recipients in the community.' },
-  { title: 'Ramadan Care Packages', description: 'Groceries distributed to needy Muslims in Central NJ prior to Ramadan.' },
-  { title: 'Iftaar', description: '250 iftaar meals distributed every Tuesday and Friday during Ramadan.' },
-  { title: 'Meat Distribution', description: 'Regular meat distribution programs for families in need.' },
-  { title: 'Eid Basket/Fitrah', description: 'Eid baskets and fitrah distributed to community members.' },
-  { title: 'Eid Clothing Drive', description: 'Clothing drives organized for Eid celebrations.' },
-  { title: 'Eid Toy Drive', description: 'Toy drives to bring joy to children during Eid.' },
-  { title: 'Furniture Give Away', description: 'Furniture donations provided to families in need.' },
-  { title: 'Cars Donated', description: 'Vehicles donated to help community members with transportation.' },
-  { title: 'Winter/Hygiene Drive', description: 'Winter essentials and hygiene products distributed to those in need.' },
-];
-
 export default function ImpactGrid() {
+  const tableData = [
+    [
+      {
+        heading: 'Funeral Assistance',
+        description: ['Helped 97 families in need with Funeral Services', '96 Muslims & 1 Non-Muslim']
+      },
+      {
+        heading: 'Feed the Hungry',
+        description: ['66,690+ meals served during Bi-Weekly distribution']
+      },
+      {
+        heading: 'Zakat Distribution',
+        description: ['265+ families including refugees from Afghanistan and Syria received financial assistance from Zakat funds']
+      }
+    ],
+    [
+      {
+        heading: 'Ramadan Care Packages',
+        description: ['1,883 Care packages distributed to underprivileged Muslims before Ramadan', '($175 retail value each)']
+      },
+      {
+        heading: 'Iftaar',
+        description: ['8,029 Iftaars distributed to economically distressed Muslims', '(Includes dates, fruits, desert, juice, etc.)']
+      },
+      {
+        heading: 'Meat Distribution',
+        description: ['8,000 lbs of Qurbani/Udhiya meat', '5,000+ of non-Qurbani halal meat distributed to Zakaat eligible families']
+      }
+    ],
+    [
+      {
+        heading: 'Eid Basket / Fitrah',
+        description: ['462 Families received Eid baskets, grains, gift cards, goodie bags, halal perfume', '(Valued from $110 to $210)']
+      },
+      {
+        heading: 'Eid Clothing Drive',
+        description: ['2,000+ pcs of brand new clothing distributed to deserving Muslim families']
+      },
+      {
+        heading: 'Eid Toy Drive',
+        description: ['62,500+ financially challenged Muslim children received brand new toys for Eid']
+      }
+    ],
+    [
+      {
+        heading: 'Furniture Give Away',
+        description: ['325+ families in low income group received furniture, household essentials, & small appliances']
+      },
+      {
+        heading: 'Cars Donated',
+        description: ['9 used (well maintained) cars donated to needy muslims']
+      },
+      {
+        heading: 'Winter/Hygiene Drive',
+        description: ['490 Jackets, 75 Sleeping Bags, 200 Hygiene packs, 200,000 masks, 50,000 sanitizers donated']
+      }
+    ]
+  ];
+
   return (
-    <section className="py-16 px-4 bg-white">
+    <section className="pt-0 pb-16 px-4 bg-[#f7f7f7]">
       <div className="container mx-auto max-w-6xl">
-        <h2 className="text-3xl font-bold mb-12 text-center">Your Donations at Work</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {impactItems.map((item, index) => (
-            <div key={index} className="p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow">
-              <h3 className="font-bold text-lg mb-2 text-[#0720ff]">{item.title}</h3>
-              <p className="text-gray-700 text-sm">{item.description}</p>
-            </div>
-          ))}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold pb-2 border-b-4 border-[#0720ff] inline-block">
+            Your Donations at Work
+          </h2>
+        </div>
+        <div className="mt-12 overflow-x-auto">
+          <table className="w-full border-collapse">
+            <tbody>
+              {tableData.map((row, rowIndex) => (
+                <tr key={rowIndex}>
+                  {row.map((cell, cellIndex) => (
+                    <td key={cellIndex} className="p-6 align-top">
+                      <h3 className="font-bold text-lg mb-2 text-gray-900">{cell.heading}</h3>
+                      {cell.description.map((desc, descIndex) => (
+                        <p key={descIndex} className="text-gray-700 text-sm mb-1 last:mb-0">
+                          {desc}
+                        </p>
+                      ))}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
