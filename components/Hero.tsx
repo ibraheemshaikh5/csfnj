@@ -33,7 +33,7 @@ export default function Hero() {
             Care & Share Foundation
           </h1>
           <p className="text-lg lg:text-xl drop-shadow-md max-w-xl">
-            Serving To Make A <span className="text-[#0620ff] font-bold">DIFFERENCE</span> Where It Matters The Most.
+            Serving To Make A <span className="text-[#0720ff] font-bold">DIFFERENCE</span> Where It Matters The Most.
           </p>
         </article>
       </div>

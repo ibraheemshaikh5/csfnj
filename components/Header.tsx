@@ -19,26 +19,26 @@ export default function Header() {
             height={56}
             className="object-contain"
           />
-          <span className="text-[#0620ff] font-semibold text-2xl hidden sm:inline tracking-tight" style={{ fontFamily: 'var(--font-poppins)' }}>Care & Share</span>
+          <span className="text-[#0720ff] font-semibold text-2xl hidden sm:inline tracking-tight" style={{ fontFamily: 'var(--font-poppins)' }}>Care & Share</span>
         </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
-          <Link href="/about" className="text-gray-900 font-medium hover:text-[#0620ff] transition-colors hover:underline underline-offset-8">
+          <Link href="/about" className="text-gray-900 font-medium hover:text-[#0720ff] transition-colors hover:underline underline-offset-8">
             About
           </Link>
-          <Link href="/events" className="text-gray-900 font-medium hover:text-[#0620ff] transition-colors hover:underline underline-offset-8">
+          <Link href="/events" className="text-gray-900 font-medium hover:text-[#0720ff] transition-colors hover:underline underline-offset-8">
             Events
           </Link>
-          <Link href="/volunteer" className="text-gray-900 font-medium hover:text-[#0620ff] transition-colors hover:underline underline-offset-8">
+          <Link href="/volunteer" className="text-gray-900 font-medium hover:text-[#0720ff] transition-colors hover:underline underline-offset-8">
             Volunteer
           </Link>
-          <Link href="/contact" className="text-gray-900 font-medium hover:text-[#0620ff] transition-colors hover:underline underline-offset-8">
+          <Link href="/contact" className="text-gray-900 font-medium hover:text-[#0720ff] transition-colors hover:underline underline-offset-8">
             Contact
           </Link>
           <Link 
             href="/donate"
-            className="bg-[#0620ff] text-white px-8 py-2.5 rounded-full font-semibold hover:bg-[#0518dd] transition-colors shadow-md"
+            className="bg-[#0720ff] text-white px-8 py-2.5 rounded-full font-semibold hover:bg-[#0618dd] transition-colors shadow-md"
           >
             Donate
           </Link>
@@ -64,21 +64,21 @@ export default function Header() {
       {isMenuOpen && (
         <div className="md:hidden bg-white border-t">
           <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
-            <Link href="/about" className="text-gray-900 font-medium hover:text-[#0620ff] transition-colors hover:underline underline-offset-8">
+            <Link href="/about" className="text-gray-900 font-medium hover:text-[#0720ff] transition-colors hover:underline underline-offset-8">
               About
             </Link>
-            <Link href="/events" className="text-gray-900 font-medium hover:text-[#0620ff] transition-colors hover:underline underline-offset-8">
+            <Link href="/events" className="text-gray-900 font-medium hover:text-[#0720ff] transition-colors hover:underline underline-offset-8">
               Events
             </Link>
-            <Link href="/volunteer" className="text-gray-900 font-medium hover:text-[#0620ff] transition-colors hover:underline underline-offset-8">
+            <Link href="/volunteer" className="text-gray-900 font-medium hover:text-[#0720ff] transition-colors hover:underline underline-offset-8">
               Volunteer
             </Link>
-            <Link href="/contact" className="text-gray-900 font-medium hover:text-[#0620ff] transition-colors hover:underline underline-offset-8">
+            <Link href="/contact" className="text-gray-900 font-medium hover:text-[#0720ff] transition-colors hover:underline underline-offset-8">
               Contact
             </Link>
             <Link 
               href="/donate"
-              className="block bg-[#0620ff] text-white px-8 py-2.5 rounded-full font-semibold hover:bg-[#0518dd] transition-colors w-full shadow-md text-center"
+              className="block bg-[#0720ff] text-white px-8 py-2.5 rounded-full font-semibold hover:bg-[#0618dd] transition-colors w-full shadow-md text-center"
             >
               Donate
             </Link>

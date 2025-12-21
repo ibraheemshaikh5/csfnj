@@ -77,7 +77,7 @@ export default function VolunteerForm() {
               </p>
               <button
                 type="submit"
-                className="bg-[#0620ff] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#0518dd] transition-colors"
+                className="bg-[#0720ff] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#0618dd] transition-colors"
               >
                 Submit
               </button>
@@ -87,7 +87,7 @@ export default function VolunteerForm() {
           {/* Join Us Sidebar */}
           <div className="lg:w-80">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-1 h-8 bg-[#0620ff]"></div>
+              <div className="w-1 h-8 bg-[#0720ff]"></div>
               <h3 className="text-2xl font-bold">Join Us</h3>
             </div>
             <p className="text-gray-700 mb-6">
@@ -98,7 +98,7 @@ export default function VolunteerForm() {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full bg-[#0620ff] flex items-center justify-center hover:bg-[#0518dd] transition-colors"
+                className="w-12 h-12 rounded-full bg-[#0720ff] flex items-center justify-center hover:bg-[#0618dd] transition-colors"
                 aria-label="Facebook"
               >
                 <span className="text-white font-bold">f</span>

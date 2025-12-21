@@ -23,12 +23,12 @@ export default function ActivityCard({
         </div>
       </div>
       <div className="p-6">
-        <h3 className="font-bold text-xl mb-3 text-[#0620ff]">{title}</h3>
+        <h3 className="font-bold text-xl mb-3 text-[#0720ff]">{title}</h3>
         <p className="text-gray-700 mb-4">{description}</p>
         {learnMoreLink && (
           <Link
             href={learnMoreLink}
-            className="text-[#0620ff] font-semibold hover:underline inline-flex items-center gap-1"
+            className="text-[#0720ff] font-semibold hover:underline inline-flex items-center gap-1"
           >
             Learn More
             <span>→</span>

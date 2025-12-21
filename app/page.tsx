@@ -16,7 +16,7 @@ export default function Home() {
       <Carousel />
 
       {/* Help Support Our Community Section */}
-      <section className="relative pb-16">
+      <section className="relative pb-8">
         {/* White Card Container - overlaps the carousel above */}
         <div className="relative z-20 -mt-32 px-4">
           <div className="bg-white rounded-lg shadow-xl max-w-5xl mx-auto">
@@ -30,7 +30,7 @@ export default function Home() {
                 </p>
                 <a
                   href="/about"
-                  className="text-[#0620ff] font-semibold hover:underline inline-flex items-center gap-1"
+                  className="text-[#0720ff] font-semibold hover:underline inline-flex items-center gap-1"
                 >
                   Learn More <span>›</span>
                 </a>
@@ -43,38 +43,31 @@ export default function Home() {
             </div>
           </div>
         </div>
+        {/* Grey background fills the space below the card */}
+        <div className="absolute inset-x-0 bottom-0 top-32 bg-[#f7f7f7] -z-10"></div>
       </section>
 
       {/* Changing Lives Section */}
-      <section className="py-16 px-4 bg-gray-50">
+      <section className="pt-10 pb-20 px-4 bg-[#f7f7f7]">
         <div className="container mx-auto max-w-6xl">
-          <div className="flex items-center gap-3 mb-12">
-            <div className="w-1 h-12 bg-[#0620ff]"></div>
-            <h2 className="text-3xl font-bold">Changing lives</h2>
+          <div className="flex items-center gap-4 mb-16">
+            <div className="w-1.5 h-14 bg-[#0720ff]"></div>
+            <h2 className="text-4xl font-bold text-gray-900">Changing lives</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <IconCard
-              icon={
-                <svg className="w-12 h-12" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
-                </svg>
-              }
+              image="/images/cooking-stickfigure.png"
+              imageAlt="Chef cooking illustration"
               description="Our food is freshly prepared and packed right before delivery."
             />
             <IconCard
-              icon={
-                <svg className="w-12 h-12" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5V14.25a1.125 1.125 0 00-1.125-1.125H3.375a1.125 1.125 0 00-1.125 1.125v3.375m0 0h.008v.008H3.375v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm16.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM8.25 4.5v9.75m0 0v-9.75m0 9.75H3.375a1.125 1.125 0 01-1.125-1.125V4.5m5.25 0h8.25m-8.25 0H3.375a1.125 1.125 0 00-1.125 1.125v9.75m11.25-9.75v9.75m0-9.75h8.25m-8.25 0h5.625c.621 0 1.125.504 1.125 1.125v9.75m-11.25 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m11.25 0v4.5" />
-                </svg>
-              }
+              image="/images/delivery-truck.png"
+              imageAlt="Delivery truck illustration"
               description="Our volunteers deliver hundreds of meals across the state."
             />
             <IconCard
-              icon={
-                <svg className="w-12 h-12" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
-                </svg>
-              }
+              image="/images/happy-family.png"
+              imageAlt="Happy family illustration"
               description="Across New Jersey, many in need now have food on their plates."
             />
           </div>
@@ -88,7 +81,7 @@ export default function Home() {
       {/* Ongoing Events Section */}
       <section className="py-16 px-4 bg-white">
         <div className="container mx-auto max-w-6xl">
-          <h2 className="text-3xl font-bold mb-2 pb-2 border-b-4 border-[#0620ff] inline-block">
+          <h2 className="text-3xl font-bold mb-2 pb-2 border-b-4 border-[#0720ff] inline-block">
             Ongoing Events
           </h2>
           <div className="mt-12 space-y-8">
@@ -110,9 +103,9 @@ export default function Home() {
       </section>
 
       {/* Things We Have Done Recently Section */}
-      <section className="py-16 px-4 bg-gray-50">
+      <section className="py-16 px-4 bg-[#f7f7f7]">
         <div className="container mx-auto max-w-6xl">
-          <h2 className="text-3xl font-bold mb-2 pb-2 border-b-4 border-[#0620ff] inline-block">
+          <h2 className="text-3xl font-bold mb-2 pb-2 border-b-4 border-[#0720ff] inline-block">
             Things We Have Done Recently
           </h2>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
