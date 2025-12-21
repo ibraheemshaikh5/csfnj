@@ -36,9 +36,12 @@ export default function Header() {
           <Link href="/contact" className="text-gray-900 font-medium hover:text-[#0620ff] transition-colors hover:underline underline-offset-8">
             Contact
           </Link>
-          <button className="bg-[#0620ff] text-white px-8 py-2.5 rounded-full font-semibold hover:bg-[#0518dd] transition-colors shadow-md">
+          <Link 
+            href="/donate"
+            className="bg-[#0620ff] text-white px-8 py-2.5 rounded-full font-semibold hover:bg-[#0518dd] transition-colors shadow-md"
+          >
             Donate
-          </button>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -73,9 +76,12 @@ export default function Header() {
             <Link href="/contact" className="text-gray-900 font-medium hover:text-[#0620ff] transition-colors hover:underline underline-offset-8">
               Contact
             </Link>
-            <button className="bg-[#0620ff] text-white px-8 py-2.5 rounded-full font-semibold hover:bg-[#0518dd] transition-colors w-full shadow-md">
+            <Link 
+              href="/donate"
+              className="block bg-[#0620ff] text-white px-8 py-2.5 rounded-full font-semibold hover:bg-[#0518dd] transition-colors w-full shadow-md text-center"
+            >
               Donate
-            </button>
+            </Link>
           </div>
         </div>
       )}

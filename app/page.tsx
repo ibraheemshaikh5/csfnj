@@ -16,24 +16,30 @@ export default function Home() {
       <Carousel />
 
       {/* Help Support Our Community Section */}
-      <section className="py-16 px-4 bg-white">
-        <div className="container mx-auto max-w-6xl">
-          <div className="flex flex-col lg:flex-row gap-12 items-start lg:items-center">
-            <div className="flex-1">
-              <h2 className="text-3xl font-bold mb-4">Food Homeless & Needy</h2>
-              <p className="text-gray-700 mb-6 leading-relaxed">
-                Ur-needy volunteers in the Care & Share Foundation prepare and distribute 750+ meals to those in need in the greater New Jersey area. Help our foundation continue to provide aid with a monthly contribution.
-              </p>
-              <a
-                href="#"
-                className="text-[#0620ff] font-semibold hover:underline inline-flex items-center gap-1"
-              >
-                Learn More
-                <span>→</span>
-              </a>
-            </div>
-            <div className="w-full lg:w-80 flex-shrink-0">
-              <DonationWidget />
+      <section className="relative pb-16">
+        {/* White Card Container - overlaps the carousel above */}
+        <div className="relative z-20 -mt-32 px-4">
+          <div className="bg-white rounded-lg shadow-xl max-w-5xl mx-auto">
+            <div className="flex flex-col lg:flex-row gap-12 items-stretch p-10 lg:p-12">
+              {/* Left side - Text content */}
+              <div className="flex-1 flex flex-col justify-center">
+                <p className="text-sm text-gray-500 mb-2">Help Support Our Community</p>
+                <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-gray-900 leading-tight">Feed Homeless & Needy</h2>
+                <p className="text-gray-600 mb-8 leading-relaxed">
+                  Bi-weekly volunteers in the Care & Share Foundation prepare and distribute 750+ meals to those in need in the greater New Jersey area. Help our foundation continue to provide aid with a monthly contribution.
+                </p>
+                <a
+                  href="/about"
+                  className="text-[#0620ff] font-semibold hover:underline inline-flex items-center gap-1"
+                >
+                  Learn More <span>›</span>
+                </a>
+              </div>
+              
+              {/* Right side - Donation Widget */}
+              <div className="w-full lg:w-[380px] flex-shrink-0">
+                <DonationWidget />
+              </div>
             </div>
           </div>
         </div>

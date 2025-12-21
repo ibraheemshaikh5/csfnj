@@ -1,25 +1,21 @@
+import Link from 'next/link';
+
 export default function DonationWidget() {
   return (
-    <div className="flex flex-col gap-4">
-      <p className="text-sm text-gray-600 mb-2">
+    <div className="bg-[#4169ff] px-4 py-6 rounded-lg">
+      <p className="text-white text-base mb-5 text-center whitespace-nowrap mx-auto w-fit">
         $20 a month sponsors a meal for a family of 5.
       </p>
-      <div className="bg-[#0620ff] p-4 rounded-lg">
-        <div className="bg-white rounded p-3 mb-3 flex items-center justify-between">
-          <input
-            type="text"
-            value="$20"
-            readOnly
-            className="text-lg font-semibold outline-none flex-1"
-          />
-          <select className="bg-transparent border-none outline-none text-gray-600">
-            <option>USD</option>
-          </select>
-        </div>
-        <button className="w-full bg-[#0620ff] text-white py-3 rounded font-semibold hover:bg-[#0518dd] transition-colors border-2 border-white">
-          DONATE
-        </button>
+      <div className="bg-white rounded-md px-5 py-4 mb-5 flex items-center justify-between">
+        <span className="text-[#4169ff] text-2xl font-medium">$ 20</span>
+        <span className="text-[#4169ff] text-xl font-medium">USD</span>
       </div>
+      <Link 
+        href="/donate"
+        className="block w-full bg-black text-white py-3.5 rounded-full font-medium hover:bg-gray-900 transition-colors text-sm tracking-wide text-center"
+      >
+        DONATE
+      </Link>
     </div>
   );
 }
