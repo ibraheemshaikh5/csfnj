@@ -26,7 +26,7 @@ export default function Home() {
               </p>
               <a
                 href="#"
-                className="text-[#1e3a8a] font-semibold hover:underline inline-flex items-center gap-1"
+                className="text-[#0620ff] font-semibold hover:underline inline-flex items-center gap-1"
               >
                 Learn More
                 <span>→</span>
@@ -43,7 +43,7 @@ export default function Home() {
       <section className="py-16 px-4 bg-gray-50">
         <div className="container mx-auto max-w-6xl">
           <div className="flex items-center gap-3 mb-12">
-            <div className="w-1 h-12 bg-[#1e3a8a]"></div>
+            <div className="w-1 h-12 bg-[#0620ff]"></div>
             <h2 className="text-3xl font-bold">Changing lives</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -82,7 +82,7 @@ export default function Home() {
       {/* Ongoing Events Section */}
       <section className="py-16 px-4 bg-white">
         <div className="container mx-auto max-w-6xl">
-          <h2 className="text-3xl font-bold mb-2 pb-2 border-b-4 border-[#1e3a8a] inline-block">
+          <h2 className="text-3xl font-bold mb-2 pb-2 border-b-4 border-[#0620ff] inline-block">
             Ongoing Events
           </h2>
           <div className="mt-12 space-y-8">
@@ -106,7 +106,7 @@ export default function Home() {
       {/* Things We Have Done Recently Section */}
       <section className="py-16 px-4 bg-gray-50">
         <div className="container mx-auto max-w-6xl">
-          <h2 className="text-3xl font-bold mb-2 pb-2 border-b-4 border-[#1e3a8a] inline-block">
+          <h2 className="text-3xl font-bold mb-2 pb-2 border-b-4 border-[#0620ff] inline-block">
             Things We Have Done Recently
           </h2>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">

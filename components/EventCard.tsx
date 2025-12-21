@@ -28,14 +28,14 @@ export default function EventCard({
           {learnMoreLink && (
             <Link
               href={learnMoreLink}
-              className="text-[#1e3a8a] font-semibold hover:underline flex items-center gap-1"
+              className="text-[#0620ff] font-semibold hover:underline flex items-center gap-1"
             >
               Learn More
               <span>→</span>
             </Link>
           )}
           {showDonateButton && (
-            <button className="bg-[#1e3a8a] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#1e40af] transition-colors">
+            <button className="bg-[#0620ff] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#0518dd] transition-colors">
               DONATE
             </button>
           )}

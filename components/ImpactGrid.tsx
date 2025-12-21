@@ -26,7 +26,7 @@ export default function ImpactGrid() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {impactItems.map((item, index) => (
             <div key={index} className="p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow">
-              <h3 className="font-bold text-lg mb-2 text-[#1e3a8a]">{item.title}</h3>
+              <h3 className="font-bold text-lg mb-2 text-[#0620ff]">{item.title}</h3>
               <p className="text-gray-700 text-sm">{item.description}</p>
             </div>
           ))}

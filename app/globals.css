@@ -2,7 +2,7 @@
 
 :root {
   /* Primary Colors */
-  --color-primary-blue: #1e3a8a;
+  --color-primary-blue: #0620ff;
   --color-orange: #f97316;
   --color-yellow: #eab308;
   --color-teal: #14b8a6;
@@ -13,12 +13,14 @@
   --color-white: #ffffff;
   --color-dark-gray: #374151;
   --color-light-gray: #9ca3af;
-  
-  /* Typography */
-  font-family: system-ui, -apple-system, sans-serif;
 }
 
 body {
   color: var(--color-dark-gray);
   background-color: var(--color-white);
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-poppins), system-ui, -apple-system, sans-serif;
 }

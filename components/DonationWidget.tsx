@@ -4,7 +4,7 @@ export default function DonationWidget() {
       <p className="text-sm text-gray-600 mb-2">
         $20 a month sponsors a meal for a family of 5.
       </p>
-      <div className="bg-[#1e3a8a] p-4 rounded-lg">
+      <div className="bg-[#0620ff] p-4 rounded-lg">
         <div className="bg-white rounded p-3 mb-3 flex items-center justify-between">
           <input
             type="text"
@@ -16,7 +16,7 @@ export default function DonationWidget() {
             <option>USD</option>
           </select>
         </div>
-        <button className="w-full bg-[#1e3a8a] text-white py-3 rounded font-semibold hover:bg-[#1e40af] transition-colors border-2 border-white">
+        <button className="w-full bg-[#0620ff] text-white py-3 rounded font-semibold hover:bg-[#0518dd] transition-colors border-2 border-white">
           DONATE
         </button>
       </div>
