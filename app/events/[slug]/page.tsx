@@ -58,3 +58,4 @@ export default function EventDetail({ params }: { params: { slug: string } }) {
     </div>
   );
 }
+
