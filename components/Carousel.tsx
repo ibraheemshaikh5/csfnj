@@ -3,10 +3,22 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-const images = [
-  '/images/carousel-1.jpg',
-  '/images/carousel-2.jpg',
-  '/images/carousel-3.jpg',
+const slides = [
+  {
+    image: '/images/carousel-1.jpg',
+    title: 'Care & Share Foundation',
+    subtitle: 'Serving To Make A DIFFERENCE Where It Matters The Most',
+  },
+  {
+    image: '/images/carousel-2.jpg',
+    title: 'Care & Share Foundation',
+    subtitle: '"No Soul Will Face A Burden Greater Than It Can Bear" - The Quran',
+  },
+  {
+    image: '/images/carousel-3.jpg',
+    title: 'Care & Share Foundation',
+    subtitle: '"No Soul Will Face A Burden Greater Than It Can Bear" - The Quran',
+  },
 ];
 
 export default function Carousel() {
@@ -26,7 +38,7 @@ export default function Carousel() {
   const handleNext = () => {
     setIsTransitioning(true);
     setTimeout(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
       setIsTransitioning(false);
     }, 500);
   };
@@ -34,7 +46,7 @@ export default function Carousel() {
   const handlePrev = () => {
     setIsTransitioning(true);
     setTimeout(() => {
-      setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+      setCurrentIndex((prevIndex) => (prevIndex - 1 + slides.length) % slides.length);
       setIsTransitioning(false);
     }, 500);
   };
@@ -50,7 +62,7 @@ export default function Carousel() {
   return (
     <section className="relative w-full h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden bg-gray-900">
       {/* Images */}
-      {images.map((image, index) => (
+      {slides.map((slide, index) => (
         <div
           key={index}
           className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
@@ -58,7 +70,7 @@ export default function Carousel() {
           }`}
         >
           <Image
-            src={image}
+            src={slide.image}
             alt={`Carousel slide ${index + 1}`}
             fill
             className="object-cover"
@@ -67,12 +79,37 @@ export default function Carousel() {
         </div>
       ))}
 
-      {/* Dark overlay for better text visibility */}
-      <div className="absolute inset-0 bg-black/20 z-10" />
+      {/* Light overlay for text visibility without darkening too much */}
+      <div className="absolute inset-0 bg-black/10 z-10" />
+
+      {/* Text Overlays */}
+      {slides.map((slide, index) => (
+        <div
+          key={`text-${index}`}
+          className={`absolute inset-0 z-20 transition-opacity duration-1000 ease-in-out ${
+            index === currentIndex ? 'opacity-100' : 'opacity-0'
+          } ${
+            index === 0 
+              ? 'flex flex-col items-start justify-start pt-12 pl-8 md:pt-16 md:pl-12 lg:pt-20 lg:pl-16' 
+              : 'flex flex-col items-center justify-center px-4 text-center'
+          }`}
+        >
+          <h1 className={`text-white font-bold text-4xl md:text-5xl lg:text-6xl mb-4 md:mb-6 drop-shadow-2xl ${
+            index === 0 ? 'text-left' : 'text-center'
+          }`}>
+            {slide.title}
+          </h1>
+          <p className={`text-white text-lg md:text-xl lg:text-2xl drop-shadow-xl font-light max-w-4xl ${
+            index === 0 ? 'text-center self-center' : 'text-center'
+          }`}>
+            {slide.subtitle}
+          </p>
+        </div>
+      ))}
 
       {/* Left hover area for Previous Button */}
       <div
-        className="absolute left-0 top-0 bottom-0 w-24 z-20 flex items-center justify-start pl-6"
+        className="absolute left-0 top-0 bottom-0 w-24 z-40 flex items-center justify-start pl-6"
         onMouseEnter={() => setShowLeftButton(true)}
         onMouseLeave={() => setShowLeftButton(false)}
       >
@@ -101,7 +138,7 @@ export default function Carousel() {
 
       {/* Right hover area for Next Button */}
       <div
-        className="absolute right-0 top-0 bottom-0 w-24 z-20 flex items-center justify-end pr-6"
+        className="absolute right-0 top-0 bottom-0 w-24 z-40 flex items-center justify-end pr-6"
         onMouseEnter={() => setShowRightButton(true)}
         onMouseLeave={() => setShowRightButton(false)}
       >
@@ -129,8 +166,8 @@ export default function Carousel() {
       </div>
 
       {/* Dots indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-3">
-        {images.map((_, index) => (
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex gap-3">
+        {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
