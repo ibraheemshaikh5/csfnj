@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} ${inter.variable} font-sans`}>{children}</body>
+      <body className={`${poppins.variable} ${inter.variable} font-sans bg-[#f7f7f7]`}>{children}</body>
     </html>
   );
 }

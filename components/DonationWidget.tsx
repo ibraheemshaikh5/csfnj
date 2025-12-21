@@ -6,9 +6,9 @@ export default function DonationWidget() {
       <p className="text-white text-base mb-5 text-center whitespace-nowrap mx-auto w-fit">
         $20 a month sponsors a meal for a family of 5.
       </p>
-      <div className="bg-white rounded-md px-5 py-4 mb-5 flex items-center justify-between">
-        <span className="text-[#0720ff] text-2xl font-medium">$ 20</span>
-        <span className="text-[#0720ff] text-xl font-medium">USD</span>
+      <div className="bg-[#e1e2f8] rounded-md px-5 py-4 mb-5 flex items-center justify-between">
+        <span className="text-[#1a2df3] text-2xl font-medium">$ 20</span>
+        <span className="text-[#1a2df3] text-xl font-medium">USD</span>
       </div>
       <Link 
         href="/donate"

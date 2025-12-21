@@ -24,3 +24,24 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-poppins), system-ui, -apple-system, sans-serif;
 }
+
+/* Custom validation styling */
+input:invalid:not(:placeholder-shown):not(:focus) {
+  border: 2px solid #ef4444;
+  background-color: #fee2e2;
+}
+
+input:invalid:not(:placeholder-shown):not(:focus)::placeholder {
+  color: #dc2626;
+}
+
+/* Custom validation message styling */
+input:invalid:not(:placeholder-shown):not(:focus) + *,
+input:invalid:not(:placeholder-shown):not(:focus) ~ * {
+  color: #dc2626;
+}
+
+/* Style browser validation tooltip */
+input:invalid:not(:placeholder-shown):not(:focus) {
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+}
