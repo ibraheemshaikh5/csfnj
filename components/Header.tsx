@@ -11,12 +11,16 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-white shadow-sm">
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-full border-2 border-[#1e3a8a] flex items-center justify-center">
-            <span className="text-[#1e3a8a] font-bold text-lg">SC</span>
-          </div>
-          <span className="text-[#1e3a8a] font-semibold text-xl">Care & Share</span>
-        </div>
+        <Link href="/" className="flex items-center gap-3">
+          <Image
+            src="/logo.png"
+            alt="Care & Share Foundation Logo"
+            width={48}
+            height={48}
+            className="object-contain"
+          />
+          <span className="text-[#1e3a8a] font-semibold text-xl hidden sm:inline">Care & Share</span>
+        </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
