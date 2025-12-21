@@ -24,7 +24,7 @@ export default function EventCard({
       </div>
       <div className="flex-1 p-6 flex flex-col justify-center gap-4">
         <p className="text-gray-700">{description}</p>
-        <div className="flex flex-wrap gap-4 items-center">
+        <div className="flex flex-wrap gap-4 items-center justify-between">
           {learnMoreLink && (
             <Link
               href={learnMoreLink}
@@ -35,9 +35,12 @@ export default function EventCard({
             </Link>
           )}
           {showDonateButton && (
-            <button className="bg-[#0720ff] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#0618dd] transition-colors">
-              DONATE
-            </button>
+            <Link
+              href="/donate"
+              className="bg-[#0720ff] text-white px-8 py-2.5 rounded-full font-semibold hover:bg-[#0618dd] transition-colors shadow-md ml-auto"
+            >
+              Donate
+            </Link>
           )}
         </div>
       </div>

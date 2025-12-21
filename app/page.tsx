@@ -79,7 +79,7 @@ export default function Home() {
       <ImpactGrid />
 
       {/* Ongoing Events Section */}
-      <section className="py-16 px-4 bg-white">
+      <section className="pt-8 pb-0 px-4 bg-[#f7f7f7]">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-3xl font-bold mb-2 pb-2 border-b-4 border-[#0720ff] inline-block">
             Ongoing Events
@@ -89,24 +89,25 @@ export default function Home() {
               image=""
               imageAlt="Food packaging event - Volunteers packaging meals"
               description="Every other week CSFNJ holds an event where volunteers package and distribute 750+ meals across central New Jersey!"
-              learnMoreLink="#"
+              learnMoreLink="/events/food-packaging"
               showDonateButton={true}
             />
             <EventCard
               image=""
               imageAlt="Ramadan 2025 Iftar - 250 Iftar Meals"
               description="Ramadan 2025 CSFNJ is distributing 250 iftaar meals every Tuesday and Friday! CSFNJ is also hosting a clothing and toy drive for Eid. Donate now to help!"
+              learnMoreLink="/events/ramadan-iftar"
               showDonateButton={true}
             />
           </div>
         </div>
       </section>
 
-      {/* Things We Have Done Recently Section */}
-      <section className="py-16 px-4 bg-[#f7f7f7]">
+      {/* Recent Events Section */}
+      <section className="pt-16 pb-16 px-4 bg-[#f7f7f7]">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-3xl font-bold mb-2 pb-2 border-b-4 border-[#0720ff] inline-block">
-            Things We Have Done Recently
+            Recent Events
           </h2>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
             <ActivityCard

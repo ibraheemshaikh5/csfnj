@@ -59,7 +59,7 @@ export default function ImpactGrid() {
   ];
 
   return (
-    <section className="pt-0 pb-16 px-4 bg-[#f7f7f7]">
+    <section className="pt-0 pb-8 px-4 bg-[#f7f7f7]">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold pb-2 border-b-4 border-[#0720ff] inline-block">
