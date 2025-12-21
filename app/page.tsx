@@ -10,7 +10,7 @@ import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <HomeHeader />
       
       <Carousel />
@@ -142,7 +142,7 @@ export default function Home() {
         </div>
       </section>
 
-      <Footer />
+      <Footer className="mt-auto" />
     </div>
   );
 }
