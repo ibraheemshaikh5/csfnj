@@ -1,5 +1,5 @@
-import Header from '@/components/Header';
-import Hero from '@/components/Hero';
+import HomeHeader from '@/components/HomeHeader';
+import Carousel from '@/components/Carousel';
 import DonationWidget from '@/components/DonationWidget';
 import IconCard from '@/components/IconCard';
 import VolunteerForm from '@/components/VolunteerForm';
@@ -11,9 +11,9 @@ import Footer from '@/components/Footer';
 export default function Home() {
   return (
     <div className="min-h-screen">
-      <Header />
+      <HomeHeader />
       
-      <Hero />
+      <Carousel />
 
       {/* Help Support Our Community Section */}
       <section className="py-16 px-4 bg-white">
