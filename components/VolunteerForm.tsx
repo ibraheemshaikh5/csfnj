@@ -1,9 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useForm, ValidationError } from '@formspree/react';
 
 export default function VolunteerForm() {
+  const [state, handleSubmit] = useForm('xdandver');
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -12,6 +14,8 @@ export default function VolunteerForm() {
     isAdult: false,
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [showForm, setShowForm] = useState(true);
 
   const validatePhone = (phone: string): boolean => {
     // Accepts formats: (123) 456-7890, 123-456-7890, 123.456.7890, 1234567890, +1 123 456 7890
@@ -23,6 +27,32 @@ export default function VolunteerForm() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
+
+  useEffect(() => {
+    if (state.succeeded) {
+      setShowSuccess(true);
+      setShowForm(false);
+      
+      const timer = setTimeout(() => {
+        // Fade out success message
+        setShowSuccess(false);
+        // Wait for fade transition, then reset form and fade in
+        setTimeout(() => {
+          setFormData({
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: '',
+            isAdult: false,
+          });
+          setErrors({});
+          setShowForm(true);
+        }, 300); // Wait for fade out transition
+      }, 5000); // 5 seconds
+
+      return () => clearTimeout(timer);
+    }
+  }, [state.succeeded]);
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -48,7 +78,7 @@ export default function VolunteerForm() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const newErrors: Record<string, string> = {};
     
@@ -88,8 +118,8 @@ export default function VolunteerForm() {
       return;
     }
     
-    // Form submission logic would go here
-    console.log('Form submitted:', formData);
+    // Submit to Formspree
+    await handleSubmit(e);
   };
 
   return (
@@ -99,11 +129,19 @@ export default function VolunteerForm() {
           {/* Form Section */}
           <div className="flex-1">
             <h2 className="text-3xl font-bold mb-8">Volunteer Registration</h2>
-            <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+            {showSuccess && (
+              <div className={`bg-green-50 border border-green-200 rounded-lg p-6 text-center transition-opacity duration-300 ${showSuccess ? 'opacity-100' : 'opacity-0'}`}>
+                <p className="text-green-800 font-semibold text-lg">Thanks for joining!</p>
+                <p className="text-green-700 mt-2">We'll be in touch soon.</p>
+              </div>
+            )}
+            {showForm && (
+            <form onSubmit={onSubmit} className={`space-y-4 transition-opacity duration-300 ${showForm ? 'opacity-100' : 'opacity-0'}`} noValidate>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <input
                     type="text"
+                    name="firstName"
                     placeholder="First Name"
                     value={formData.firstName}
                     onChange={(e) => {
@@ -121,10 +159,12 @@ export default function VolunteerForm() {
                   {errors.firstName && (
                     <p className="mt-1 text-sm text-red-600">{errors.firstName}</p>
                   )}
+                  <ValidationError prefix="First Name" field="firstName" errors={state.errors} />
                 </div>
                 <div>
                   <input
                     type="text"
+                    name="lastName"
                     placeholder="Last Name"
                     value={formData.lastName}
                     onChange={(e) => {
@@ -142,11 +182,13 @@ export default function VolunteerForm() {
                   {errors.lastName && (
                     <p className="mt-1 text-sm text-red-600">{errors.lastName}</p>
                   )}
+                  <ValidationError prefix="Last Name" field="lastName" errors={state.errors} />
                 </div>
               </div>
               <div>
                 <input
                   type="email"
+                  name="email"
                   placeholder="Email"
                   value={formData.email}
                   onChange={handleEmailChange}
@@ -157,10 +199,12 @@ export default function VolunteerForm() {
                 {errors.email && (
                   <p className="mt-1 text-sm text-red-600">{errors.email}</p>
                 )}
+                <ValidationError prefix="Email" field="email" errors={state.errors} />
               </div>
               <div>
                 <input
                   type="tel"
+                  name="phone"
                   placeholder="Phone Number (e.g., (123) 456-7890)"
                   value={formData.phone}
                   onChange={handlePhoneChange}
@@ -172,6 +216,7 @@ export default function VolunteerForm() {
                 {errors.phone && (
                   <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
                 )}
+                <ValidationError prefix="Phone" field="phone" errors={state.errors} />
               </div>
               <div>
                 <div className="flex items-center gap-2">
@@ -199,11 +244,13 @@ export default function VolunteerForm() {
               </div>
               <button
                 type="submit"
-                className="bg-[#0720ff] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#0618dd] transition-colors"
+                disabled={state.submitting}
+                className="bg-[#0720ff] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#0618dd] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Submit
+                {state.submitting ? 'Submitting...' : 'Submit'}
               </button>
             </form>
+            )}
           </div>
 
           {/* Make a Difference Sidebar */}

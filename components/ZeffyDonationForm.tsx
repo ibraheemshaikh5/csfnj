@@ -11,8 +11,7 @@ export default function ZeffyDonationForm() {
         <iframe
           title="Donation form powered by Zeffy"
           src="https://www.zeffy.com/embed/donation-form/care-and-share-foundation-donations"
-          allowPaymentRequest
-          allowTransparency="true"
+          {...({ allowPaymentRequest: true, allowTransparency: true } as React.IframeHTMLAttributes<HTMLIFrameElement>)}
           className="absolute border-0 w-full h-full"
           style={{
             position: 'absolute',
