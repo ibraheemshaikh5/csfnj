@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useForm, ValidationError } from '@formspree/react';
+import { track } from '@vercel/analytics';
 
 export default function ContactForm() {
   const [state, handleSubmit] = useForm('xbdrkezp');
@@ -29,6 +30,7 @@ export default function ContactForm() {
 
   useEffect(() => {
     if (state.succeeded) {
+      track('form_submission', { form_type: 'contact' });
       setShowSuccess(true);
       setShowForm(false);
       

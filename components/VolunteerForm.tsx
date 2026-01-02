@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useForm, ValidationError } from '@formspree/react';
+import { track } from '@vercel/analytics';
 
 export default function VolunteerForm() {
   const [state, handleSubmit] = useForm('xdandver');
@@ -30,6 +31,7 @@ export default function VolunteerForm() {
 
   useEffect(() => {
     if (state.succeeded) {
+      track('form_submission', { form_type: 'volunteer' });
       setShowSuccess(true);
       setShowForm(false);
       

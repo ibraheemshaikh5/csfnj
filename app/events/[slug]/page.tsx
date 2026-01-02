@@ -1,6 +1,7 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import EventDetailClient from './EventDetailClient';
 import type { Metadata } from 'next';
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
@@ -46,6 +47,7 @@ export default function EventDetail({ params }: { params: { slug: string } }) {
           >
             ← Back to Events
           </Link>
+          <EventDetailClient slug={params.slug} />
           <h1 className="text-4xl font-bold mb-8 text-gray-900">{event.title}</h1>
           <div className="bg-white rounded-lg shadow-sm p-8 space-y-6">
             <p className="text-gray-700 text-lg leading-relaxed">
@@ -58,4 +60,3 @@ export default function EventDetail({ params }: { params: { slug: string } }) {
     </div>
   );
 }
-

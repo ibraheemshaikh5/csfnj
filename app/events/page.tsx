@@ -1,6 +1,7 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import EventCard from '@/components/EventCard';
+import EventsPageClient from './EventsPageClient';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -9,11 +10,13 @@ export const metadata: Metadata = {
 };
 
 export default function Events() {
+
   return (
     <div className="min-h-screen bg-[#f7f7f7] flex flex-col">
       <Header />
       <main className="py-16 px-4 flex-grow">
         <div className="container mx-auto max-w-6xl">
+          <EventsPageClient />
           <h1 className="text-4xl font-bold mb-2 pb-2 border-b-4 border-[#0720ff] inline-block mb-12">
             Events
           </h1>
@@ -39,4 +42,3 @@ export default function Events() {
     </div>
   );
 }
-
