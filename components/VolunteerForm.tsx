@@ -32,7 +32,9 @@ export default function VolunteerForm() {
   useEffect(() => {
     if (state.succeeded) {
       track('form_submission', { form_type: 'volunteer' });
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setShowSuccess(true);
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setShowForm(false);
       
       const timer = setTimeout(() => {
@@ -142,7 +144,7 @@ export default function VolunteerForm() {
             {showSuccess && (
               <div className={`bg-green-50 border border-green-200 rounded-lg p-4 sm:p-6 text-center transition-opacity duration-300 ${showSuccess ? 'opacity-100' : 'opacity-0'}`}>
                 <p className="text-green-800 font-semibold text-base sm:text-lg">Thanks for joining!</p>
-                <p className="text-green-700 mt-1 sm:mt-2 text-sm sm:text-base">We'll be in touch soon.</p>
+                <p className="text-green-700 mt-1 sm:mt-2 text-sm sm:text-base">We&apos;ll be in touch soon.</p>
               </div>
             )}
             {showForm && (

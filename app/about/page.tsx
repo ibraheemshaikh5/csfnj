@@ -68,7 +68,7 @@ export default function About() {
                 {/* Text and Button (Right) */}
                 <div className="text-white space-y-1.5 sm:space-y-4">
                   <p className="text-sm sm:text-lg md:text-xl leading-relaxed">
-                    Putting food on someone's plate gives them the <strong>CHANCE</strong> for better.
+                    Putting food on someone&apos;s plate gives them the <strong>CHANCE</strong> for better.
                   </p>
                   <div className="flex justify-center mt-2 sm:mt-8">
                     <Link

@@ -31,7 +31,9 @@ export default function ContactForm() {
   useEffect(() => {
     if (state.succeeded) {
       track('form_submission', { form_type: 'contact' });
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setShowSuccess(true);
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setShowForm(false);
       
       const timer = setTimeout(() => {
@@ -126,7 +128,7 @@ export default function ContactForm() {
       {showSuccess && (
         <div className={`bg-green-50 border border-green-200 rounded-lg p-6 text-center transition-opacity duration-300 ${showSuccess ? 'opacity-100' : 'opacity-0'}`}>
           <p className="text-green-800 font-semibold text-lg">Thanks for contacting us!</p>
-          <p className="text-green-700 mt-2">We'll get back to you soon.</p>
+          <p className="text-green-700 mt-2">We&apos;ll get back to you soon.</p>
         </div>
       )}
       {showForm && (
