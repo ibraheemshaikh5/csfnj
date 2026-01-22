@@ -40,7 +40,7 @@ export default function ZeffyDonationForm() {
   return (
     <div className="w-full">
       <div
-        className="relative overflow-hidden w-full rounded-lg h-[550px] sm:h-[700px] md:h-[900px]"
+        className="relative overflow-hidden w-full rounded-lg h-[460px] sm:h-[550px] md:h-[700px]"
       >
         <iframe
           ref={iframeRef}

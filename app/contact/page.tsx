@@ -16,17 +16,17 @@ export default function Contact() {
       <Header />
       <main className="pt-8 pb-8 sm:pt-12 sm:pb-12 md:pt-16 md:pb-16 px-4 flex-grow">
         <div className="container mx-auto max-w-6xl">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 pb-2 border-b-4 border-[#0720ff] inline-block">
+          <h1 className="text-xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-8 pb-2 border-b-4 border-[#0720ff] inline-block">
             Contact
           </h1>
 
           <div className="max-w-[940px] mx-auto">
-            <div className="bg-white rounded-lg shadow-lg p-6 md:p-8">
-              <div className="text-center mb-6">
-                <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 md:p-8">
+              <div className="text-center mb-4 sm:mb-6">
+                <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2 sm:mb-4">
                   Get in Touch
                 </h2>
-                <p className="text-gray-600 text-lg">
+                <p className="text-gray-600 text-sm sm:text-base md:text-lg">
                   Have questions, comments, or concerns? We&apos;d love to hear from you.
                   Reach out to us by phone or WhatsApp.
                 </p>
@@ -54,10 +54,10 @@ export default function Contact() {
                     </svg>
                   </div>
                   <div className="flex-1">
-                    <p className="text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wide">
+                    <p className="text-xs font-medium text-gray-500 uppercase tracking-wide">
                       Call Us
                     </p>
-                    <p className="text-xl sm:text-2xl font-bold text-gray-900 group-hover:text-[#0720ff] transition-colors">
+                    <p className="text-lg sm:text-2xl font-bold text-gray-900 group-hover:text-[#0720ff] transition-colors">
                       {formattedPhone}
                     </p>
                   </div>
@@ -93,10 +93,10 @@ export default function Contact() {
                     </svg>
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm font-medium text-gray-500 uppercase tracking-wide">
+                    <p className="text-xs font-medium text-gray-500 uppercase tracking-wide">
                       WhatsApp
                     </p>
-                    <p className="text-xl font-bold text-gray-900 group-hover:text-[#25D366] transition-colors">
+                    <p className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-[#25D366] transition-colors">
                       Send us a message
                     </p>
                   </div>

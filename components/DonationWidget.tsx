@@ -12,7 +12,7 @@ export default function DonationWidget() {
       </div>
       <Link 
         href="/donate"
-        className="block w-full bg-black text-white py-3.5 rounded-full font-medium hover:bg-gray-900 transition-colors text-sm tracking-wide text-center"
+        className="block w-full bg-black text-white py-3.5 rounded-full font-medium hover:bg-gray-900 active:bg-gray-800 transition-colors text-sm tracking-wide text-center"
       >
         DONATE
       </Link>

@@ -1,7 +1,7 @@
 import HomeHeader from '@/components/HomeHeader';
 import Carousel from '@/components/Carousel';
 import DonationWidget from '@/components/DonationWidget';
-import IconCard from '@/components/IconCard';
+import ChangingLivesCarousel from '@/components/ChangingLivesCarousel';
 import VolunteerForm from '@/components/VolunteerForm';
 import ImpactGrid from '@/components/ImpactGrid';
 import EventCard from '@/components/EventCard';
@@ -16,21 +16,26 @@ export default function Home() {
       <Carousel />
 
       {/* Help Support Our Community Section */}
-      <section className="relative pb-6 sm:pb-8">
+      <section className="relative pb-4 sm:pb-8">
         {/* White Card Container - overlaps the carousel above */}
-        <div className="relative z-20 -mt-16 sm:-mt-24 md:-mt-32 px-4">
+        <div className="relative z-20 -mt-12 sm:-mt-24 md:-mt-32 px-3 sm:px-4">
           <div className="bg-white rounded-lg shadow-xl max-w-5xl mx-auto">
-            <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 lg:gap-12 items-stretch p-5 sm:p-8 lg:p-12">
+            <div className="flex flex-col lg:flex-row gap-4 sm:gap-8 lg:gap-12 items-stretch p-4 sm:p-8 lg:p-12">
               {/* Left side - Text content */}
               <div className="flex-1 flex flex-col justify-center">
-                <p className="text-xs sm:text-sm text-gray-500 mb-1 sm:mb-2">Help Support Our Community</p>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 text-gray-900 leading-tight">Feed Homeless & Needy</h2>
-                <p className="text-gray-600 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
+                <p className="text-xs text-gray-500 mb-1 sm:mb-2">Help Support Our Community</p>
+                <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-6 text-gray-900 leading-tight">Feed Homeless & Needy</h2>
+                {/* Mobile: Shorter description */}
+                <p className="text-gray-600 mb-4 leading-relaxed text-sm sm:hidden">
+                  Help our foundation continue to provide 750+ meals bi-weekly to those in need with a monthly contribution.
+                </p>
+                {/* Desktop: Full description */}
+                <p className="text-gray-600 mb-8 leading-relaxed text-base hidden sm:block">
                   Bi-weekly volunteers in the Care & Share Foundation prepare and distribute 750+ meals to those in need in the greater New Jersey area. Help our foundation continue to provide aid with a monthly contribution.
                 </p>
                 <a
                   href="/about"
-                  className="text-[#0720ff] font-semibold hover:underline inline-flex items-center gap-1 text-sm sm:text-base"
+                  className="text-[#0720ff] font-semibold hover:underline inline-flex items-center gap-1 text-sm"
                 >
                   Learn More <span>›</span>
                 </a>
@@ -48,29 +53,13 @@ export default function Home() {
       </section>
 
       {/* Changing Lives Section */}
-      <section className="pt-6 sm:pt-10 pb-12 sm:pb-16 md:pb-20 px-4 bg-[#f7f7f7]">
+      <section className="pt-4 sm:pt-10 pb-8 sm:pb-16 md:pb-20 px-4 bg-[#f7f7f7]">
         <div className="container mx-auto max-w-6xl">
-          <div className="flex items-center gap-3 sm:gap-4 mb-8 sm:mb-12 md:mb-16">
-            <div className="w-1 sm:w-1.5 h-10 sm:h-14 bg-[#0720ff]"></div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">Changing lives</h2>
+          <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-12 md:mb-16">
+            <div className="w-1 sm:w-1.5 h-8 sm:h-14 bg-[#0720ff]"></div>
+            <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900">Changing lives</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            <IconCard
-              image="/images/cooking-stickfigure.png"
-              imageAlt="Chef cooking illustration"
-              description="Our food is freshly prepared and packed right before delivery."
-            />
-            <IconCard
-              image="/images/delivery-truck.png"
-              imageAlt="Delivery truck illustration"
-              description="Our volunteers deliver hundreds of meals across the state."
-            />
-            <IconCard
-              image="/images/happy-family.png"
-              imageAlt="Happy family illustration"
-              description="Across New Jersey, many in need now have food on their plates."
-            />
-          </div>
+          <ChangingLivesCarousel />
         </div>
       </section>
 
@@ -79,9 +68,9 @@ export default function Home() {
       <ImpactGrid />
 
       {/* Ongoing Events Section */}
-      <section className="pt-6 sm:pt-8 pb-0 px-4 bg-[#f7f7f7]">
+      <section className="pt-4 sm:pt-8 pb-0 px-4 bg-[#f7f7f7]">
         <div className="container mx-auto max-w-6xl">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-2 pb-2 border-b-4 border-[#0720ff] inline-block">
+          <h2 className="text-xl sm:text-3xl font-bold mb-2 pb-2 border-b-4 border-[#0720ff] inline-block">
             Ongoing Events
           </h2>
           <div className="mt-8 sm:mt-12 space-y-6 sm:space-y-8">
@@ -104,9 +93,9 @@ export default function Home() {
       </section>
 
       {/* Recent Events Section */}
-      <section className="pt-10 sm:pt-12 md:pt-16 pb-10 sm:pb-12 md:pb-16 px-4 bg-[#f7f7f7]">
+      <section className="pt-8 sm:pt-12 md:pt-16 pb-8 sm:pb-12 md:pb-16 px-4 bg-[#f7f7f7]">
         <div className="container mx-auto max-w-6xl">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-2 pb-2 border-b-4 border-[#0720ff] inline-block">
+          <h2 className="text-xl sm:text-3xl font-bold mb-2 pb-2 border-b-4 border-[#0720ff] inline-block">
             Recent Events
           </h2>
           <div className="mt-8 sm:mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">

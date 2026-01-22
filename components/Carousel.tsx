@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
 
 const slides = [
@@ -26,14 +26,26 @@ export default function Carousel() {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [showLeftButton, setShowLeftButton] = useState(false);
   const [showRightButton, setShowRightButton] = useState(false);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
 
   const handleNext = useCallback(() => {
+    if (isTransitioning) return;
     setIsTransitioning(true);
     setTimeout(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
       setIsTransitioning(false);
     }, 500);
-  }, []);
+  }, [isTransitioning]);
+
+  const handlePrev = useCallback(() => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentIndex((prevIndex) => (prevIndex - 1 + slides.length) % slides.length);
+      setIsTransitioning(false);
+    }, 500);
+  }, [isTransitioning]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -43,16 +55,43 @@ export default function Carousel() {
     return () => clearInterval(interval);
   }, [handleNext]);
 
-  const handlePrev = () => {
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setCurrentIndex((prevIndex) => (prevIndex - 1 + slides.length) % slides.length);
-      setIsTransitioning(false);
-    }, 500);
+  // Touch handlers for swipe gestures
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current === null || touchEndX.current === null) return;
+
+    const diff = touchStartX.current - touchEndX.current;
+    const minSwipeDistance = 50;
+
+    if (Math.abs(diff) > minSwipeDistance) {
+      if (diff > 0) {
+        // Swiped left - go to next slide
+        handleNext();
+      } else {
+        // Swiped right - go to previous slide
+        handlePrev();
+      }
+    }
+
+    // Reset touch positions
+    touchStartX.current = null;
+    touchEndX.current = null;
   };
 
   return (
-    <section className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden bg-gray-900">
+    <section
+      className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden bg-gray-900"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       {/* Images */}
       {slides.map((slide, index) => (
         <div
@@ -102,21 +141,21 @@ export default function Carousel() {
         </div>
       ))}
 
-      {/* Left hover area for Previous Button */}
+      {/* Left hover area for Previous Button - Hidden on mobile */}
       <div
-        className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 z-40 flex items-center justify-start pl-2 sm:pl-6"
+        className="absolute left-0 top-0 bottom-0 w-24 z-40 hidden sm:flex items-center justify-start pl-6"
         onMouseEnter={() => setShowLeftButton(true)}
         onMouseLeave={() => setShowLeftButton(false)}
       >
         <button
           onClick={handlePrev}
-          className={`transition-all p-2 rounded-full bg-black/20 sm:bg-transparent hover:bg-black/30 ${
-            showLeftButton ? 'opacity-100' : 'opacity-70 sm:opacity-0'
+          className={`transition-all p-3 rounded-full hover:bg-black/30 active:bg-black/40 ${
+            showLeftButton ? 'opacity-100' : 'opacity-0'
           }`}
           aria-label="Previous slide"
         >
           <svg
-            className="w-8 h-8 sm:w-10 sm:h-10 text-white drop-shadow-lg"
+            className="w-10 h-10 text-white drop-shadow-lg"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -131,21 +170,21 @@ export default function Carousel() {
         </button>
       </div>
 
-      {/* Right hover area for Next Button */}
+      {/* Right hover area for Next Button - Hidden on mobile */}
       <div
-        className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 z-40 flex items-center justify-end pr-2 sm:pr-6"
+        className="absolute right-0 top-0 bottom-0 w-24 z-40 hidden sm:flex items-center justify-end pr-6"
         onMouseEnter={() => setShowRightButton(true)}
         onMouseLeave={() => setShowRightButton(false)}
       >
         <button
           onClick={handleNext}
-          className={`transition-all p-2 rounded-full bg-black/20 sm:bg-transparent hover:bg-black/30 ${
-            showRightButton ? 'opacity-100' : 'opacity-70 sm:opacity-0'
+          className={`transition-all p-3 rounded-full hover:bg-black/30 active:bg-black/40 ${
+            showRightButton ? 'opacity-100' : 'opacity-0'
           }`}
           aria-label="Next slide"
         >
           <svg
-            className="w-8 h-8 sm:w-10 sm:h-10 text-white drop-shadow-lg"
+            className="w-10 h-10 text-white drop-shadow-lg"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

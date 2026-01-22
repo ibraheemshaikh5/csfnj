@@ -133,60 +133,72 @@ export default function ContactForm() {
         <form onSubmit={onSubmit} className={`space-y-4 transition-opacity duration-300 ${showForm ? 'opacity-100' : 'opacity-0'}`} noValidate>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-                  <input
-                    type="text"
-                    name="firstName"
-                    placeholder="First Name"
-                    value={formData.firstName}
-                    onChange={(e) => {
-                      setFormData({ ...formData, firstName: e.target.value });
-                      if (errors.firstName) {
-                        const newErrors = { ...errors };
-                        delete newErrors.firstName;
-                        setErrors(newErrors);
-                      }
-                    }}
-                    className={`bg-[#e1e2f8] text-[#1a2df3] px-4 py-3 rounded-lg border-none outline-none focus:ring-2 focus:ring-[#1a2df3] placeholder:text-[#1a2df3]/60 w-full ${
-                      errors.firstName ? 'ring-2 ring-red-500 bg-red-50' : ''
-                    }`}
-                  />
-                  {errors.firstName && (
-                    <p className="mt-1 text-sm text-red-600">{errors.firstName}</p>
-                  )}
-                  <ValidationError prefix="First Name" field="firstName" errors={state.errors} />
+            <label htmlFor="contact-firstName" className="block text-sm font-medium text-gray-700 mb-1">
+              First Name <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              id="contact-firstName"
+              name="firstName"
+              placeholder="Enter your first name"
+              value={formData.firstName}
+              onChange={(e) => {
+                setFormData({ ...formData, firstName: e.target.value });
+                if (errors.firstName) {
+                  const newErrors = { ...errors };
+                  delete newErrors.firstName;
+                  setErrors(newErrors);
+                }
+              }}
+              className={`bg-[#e1e2f8] text-[#1a2df3] px-4 py-3 rounded-lg border-none outline-none focus:ring-2 focus:ring-[#1a2df3] placeholder:text-[#1a2df3]/60 w-full text-base ${
+                errors.firstName ? 'ring-2 ring-red-500 bg-red-50' : ''
+              }`}
+            />
+            {errors.firstName && (
+              <p className="mt-1 text-sm text-red-600">{errors.firstName}</p>
+            )}
+            <ValidationError prefix="First Name" field="firstName" errors={state.errors} />
           </div>
           <div>
-                  <input
-                    type="text"
-                    name="lastName"
-                    placeholder="Last Name"
-                    value={formData.lastName}
-                    onChange={(e) => {
-                      setFormData({ ...formData, lastName: e.target.value });
-                      if (errors.lastName) {
-                        const newErrors = { ...errors };
-                        delete newErrors.lastName;
-                        setErrors(newErrors);
-                      }
-                    }}
-                    className={`bg-[#e1e2f8] text-[#1a2df3] px-4 py-3 rounded-lg border-none outline-none focus:ring-2 focus:ring-[#1a2df3] placeholder:text-[#1a2df3]/60 w-full ${
-                      errors.lastName ? 'ring-2 ring-red-500 bg-red-50' : ''
-                    }`}
-                  />
-                  {errors.lastName && (
-                    <p className="mt-1 text-sm text-red-600">{errors.lastName}</p>
-                  )}
-                  <ValidationError prefix="Last Name" field="lastName" errors={state.errors} />
+            <label htmlFor="contact-lastName" className="block text-sm font-medium text-gray-700 mb-1">
+              Last Name <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              id="contact-lastName"
+              name="lastName"
+              placeholder="Enter your last name"
+              value={formData.lastName}
+              onChange={(e) => {
+                setFormData({ ...formData, lastName: e.target.value });
+                if (errors.lastName) {
+                  const newErrors = { ...errors };
+                  delete newErrors.lastName;
+                  setErrors(newErrors);
+                }
+              }}
+              className={`bg-[#e1e2f8] text-[#1a2df3] px-4 py-3 rounded-lg border-none outline-none focus:ring-2 focus:ring-[#1a2df3] placeholder:text-[#1a2df3]/60 w-full text-base ${
+                errors.lastName ? 'ring-2 ring-red-500 bg-red-50' : ''
+              }`}
+            />
+            {errors.lastName && (
+              <p className="mt-1 text-sm text-red-600">{errors.lastName}</p>
+            )}
+            <ValidationError prefix="Last Name" field="lastName" errors={state.errors} />
           </div>
         </div>
         <div>
+          <label htmlFor="contact-email" className="block text-sm font-medium text-gray-700 mb-1">
+            Email <span className="text-gray-400">(optional)</span>
+          </label>
           <input
             type="email"
+            id="contact-email"
             name="email"
-            placeholder="Email"
+            placeholder="your@email.com"
             value={formData.email}
             onChange={handleEmailChange}
-            className={`w-full bg-[#e1e2f8] text-[#1a2df3] px-4 py-3 rounded-lg border-none outline-none focus:ring-2 focus:ring-[#1a2df3] placeholder:text-[#1a2df3]/60 ${
+            className={`w-full bg-[#e1e2f8] text-[#1a2df3] px-4 py-3 rounded-lg border-none outline-none focus:ring-2 focus:ring-[#1a2df3] placeholder:text-[#1a2df3]/60 text-base ${
               errors.email ? 'ring-2 ring-red-500 bg-red-50' : ''
             }`}
           />
@@ -196,14 +208,18 @@ export default function ContactForm() {
           <ValidationError prefix="Email" field="email" errors={state.errors} />
         </div>
         <div>
+          <label htmlFor="contact-phone" className="block text-sm font-medium text-gray-700 mb-1">
+            Phone Number <span className="text-red-500">*</span>
+          </label>
           <input
             type="tel"
+            id="contact-phone"
             name="phone"
-            placeholder="Phone Number (e.g., (123) 456-7890)"
+            placeholder="(123) 456-7890"
             value={formData.phone}
             onChange={handlePhoneChange}
             pattern="[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}"
-            className={`w-full bg-[#e1e2f8] text-[#1a2df3] px-4 py-3 rounded-lg border-none outline-none focus:ring-2 focus:ring-[#1a2df3] placeholder:text-[#1a2df3]/60 ${
+            className={`w-full bg-[#e1e2f8] text-[#1a2df3] px-4 py-3 rounded-lg border-none outline-none focus:ring-2 focus:ring-[#1a2df3] placeholder:text-[#1a2df3]/60 text-base ${
               errors.phone ? 'ring-2 ring-red-500 bg-red-50' : ''
             }`}
           />
@@ -213,9 +229,13 @@ export default function ContactForm() {
           <ValidationError prefix="Phone" field="phone" errors={state.errors} />
         </div>
         <div>
+          <label htmlFor="contact-message" className="block text-sm font-medium text-gray-700 mb-1">
+            Message <span className="text-red-500">*</span>
+          </label>
           <textarea
+            id="contact-message"
             name="message"
-            placeholder="Message"
+            placeholder="How can we help you?"
             value={formData.message}
             onChange={(e) => {
               setFormData({ ...formData, message: e.target.value });
@@ -225,8 +245,8 @@ export default function ContactForm() {
                 setErrors(newErrors);
               }
             }}
-            rows={6}
-            className={`w-full bg-[#e1e2f8] text-[#1a2df3] px-4 py-3 rounded-lg border-none outline-none focus:ring-2 focus:ring-[#1a2df3] placeholder:text-[#1a2df3]/60 resize-none ${
+            rows={4}
+            className={`w-full bg-[#e1e2f8] text-[#1a2df3] px-4 py-3 rounded-lg border-none outline-none focus:ring-2 focus:ring-[#1a2df3] placeholder:text-[#1a2df3]/60 resize-none text-base ${
               errors.message ? 'ring-2 ring-red-500 bg-red-50' : ''
             }`}
           />
@@ -239,7 +259,7 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={state.submitting}
-            className="bg-[#0720ff] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#0618dd] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="bg-[#0720ff] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#0618dd] active:bg-[#0515b8] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {state.submitting ? 'Submitting...' : 'Submit'}
           </button>

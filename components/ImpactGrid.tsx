@@ -1,4 +1,10 @@
+'use client';
+
+import { useState } from 'react';
+
 export default function ImpactGrid() {
+  const [showAll, setShowAll] = useState(false);
+
   const tableData = [
     [
       {
@@ -60,28 +66,55 @@ export default function ImpactGrid() {
 
   // Flatten the table data for mobile card layout
   const allItems = tableData.flat();
+  const mobileItems = showAll ? allItems : allItems.slice(0, 4);
 
   return (
     <section className="pt-0 pb-8 px-4 bg-[#f7f7f7]">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl font-bold pb-2 border-b-4 border-[#0720ff] inline-block">
+        <div className="text-center mb-6 sm:mb-12">
+          <h2 className="text-xl sm:text-3xl font-bold pb-2 border-b-4 border-[#0720ff] inline-block">
             Your Donations at Work
           </h2>
         </div>
 
-        {/* Mobile: Card Grid Layout */}
-        <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4 md:hidden">
-          {allItems.map((item, index) => (
-            <div key={index} className="bg-white rounded-lg p-4 shadow-sm">
-              <h3 className="font-bold text-base mb-2 text-gray-900">{item.heading}</h3>
-              {item.description.map((desc, descIndex) => (
-                <p key={descIndex} className="text-gray-700 text-sm mb-1 last:mb-0">
-                  {desc}
-                </p>
-              ))}
-            </div>
-          ))}
+        {/* Mobile: Card Grid Layout with Show More */}
+        <div className="mt-8 sm:mt-12 md:hidden">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {mobileItems.map((item, index) => (
+              <div key={index} className="bg-white rounded-lg p-4 shadow-sm">
+                <h3 className="font-bold text-base mb-2 text-gray-900">{item.heading}</h3>
+                {item.description.map((desc, descIndex) => (
+                  <p key={descIndex} className="text-gray-700 text-sm mb-1 last:mb-0">
+                    {desc}
+                  </p>
+                ))}
+              </div>
+            ))}
+          </div>
+
+          {/* See All / Show Less Button */}
+          <div className="text-center mt-6">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="inline-flex items-center gap-2 text-[#0720ff] font-semibold hover:underline active:text-[#0618dd] transition-colors"
+            >
+              {showAll ? (
+                <>
+                  Show Less
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                  </svg>
+                </>
+              ) : (
+                <>
+                  See All Impact ({allItems.length - 4} more)
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </>
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Desktop: Table Layout */}
@@ -109,4 +142,3 @@ export default function ImpactGrid() {
     </section>
   );
 }
-

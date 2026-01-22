@@ -125,26 +125,38 @@ export default function VolunteerForm() {
   };
 
   return (
-    <section className="py-16 px-4 bg-[#f7f7f7]">
+    <section className="pt-8 pb-8 sm:pt-12 sm:pb-12 md:pt-16 md:pb-16 px-4 bg-[#f7f7f7]">
       <div className="container mx-auto max-w-6xl">
-        <div className="flex flex-col lg:flex-row gap-12 items-start">
+        {/* Mobile: Show info banner above form */}
+        <div className="lg:hidden mb-6 bg-[#0720ff]/10 rounded-lg p-3 flex items-center gap-3">
+          <div className="w-1 h-10 bg-[#0720ff] rounded-full flex-shrink-0"></div>
+          <p className="text-gray-700 text-sm">
+            <strong>Volunteer with us!</strong> Every other Sunday, 9:30am - 1:00pm in Central Jersey
+          </p>
+        </div>
+
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
           {/* Form Section */}
-          <div className="flex-1">
-            <h2 className="text-3xl font-bold mb-8">Volunteer Registration</h2>
+          <div className="flex-1 w-full">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-8">Volunteer Registration</h2>
             {showSuccess && (
-              <div className={`bg-green-50 border border-green-200 rounded-lg p-6 text-center transition-opacity duration-300 ${showSuccess ? 'opacity-100' : 'opacity-0'}`}>
-                <p className="text-green-800 font-semibold text-lg">Thanks for joining!</p>
-                <p className="text-green-700 mt-2">We'll be in touch soon.</p>
+              <div className={`bg-green-50 border border-green-200 rounded-lg p-4 sm:p-6 text-center transition-opacity duration-300 ${showSuccess ? 'opacity-100' : 'opacity-0'}`}>
+                <p className="text-green-800 font-semibold text-base sm:text-lg">Thanks for joining!</p>
+                <p className="text-green-700 mt-1 sm:mt-2 text-sm sm:text-base">We'll be in touch soon.</p>
               </div>
             )}
             {showForm && (
-            <form onSubmit={onSubmit} className={`space-y-4 transition-opacity duration-300 ${showForm ? 'opacity-100' : 'opacity-0'}`} noValidate>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <form onSubmit={onSubmit} className={`space-y-3 sm:space-y-4 transition-opacity duration-300 ${showForm ? 'opacity-100' : 'opacity-0'}`} noValidate>
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
                 <div>
+                  <label htmlFor="volunteer-firstName" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                    First Name <span className="text-red-500">*</span>
+                  </label>
                   <input
                     type="text"
+                    id="volunteer-firstName"
                     name="firstName"
-                    placeholder="First Name"
+                    placeholder="First name"
                     value={formData.firstName}
                     onChange={(e) => {
                       setFormData({ ...formData, firstName: e.target.value });
@@ -154,20 +166,24 @@ export default function VolunteerForm() {
                         setErrors(newErrors);
                       }
                     }}
-                    className={`bg-[#e1e2f8] text-[#1a2df3] px-4 py-3 rounded-lg border-none outline-none focus:ring-2 focus:ring-[#1a2df3] placeholder:text-[#1a2df3]/60 w-full ${
+                    className={`bg-[#e1e2f8] text-[#1a2df3] px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border-none outline-none focus:ring-2 focus:ring-[#1a2df3] placeholder:text-[#1a2df3]/60 w-full text-base ${
                       errors.firstName ? 'ring-2 ring-red-500 bg-red-50' : ''
                     }`}
                   />
                   {errors.firstName && (
-                    <p className="mt-1 text-sm text-red-600">{errors.firstName}</p>
+                    <p className="mt-1 text-xs text-red-600">{errors.firstName}</p>
                   )}
                   <ValidationError prefix="First Name" field="firstName" errors={state.errors} />
                 </div>
                 <div>
+                  <label htmlFor="volunteer-lastName" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                    Last Name <span className="text-red-500">*</span>
+                  </label>
                   <input
                     type="text"
+                    id="volunteer-lastName"
                     name="lastName"
-                    placeholder="Last Name"
+                    placeholder="Last name"
                     value={formData.lastName}
                     onChange={(e) => {
                       setFormData({ ...formData, lastName: e.target.value });
@@ -177,50 +193,58 @@ export default function VolunteerForm() {
                         setErrors(newErrors);
                       }
                     }}
-                    className={`bg-[#e1e2f8] text-[#1a2df3] px-4 py-3 rounded-lg border-none outline-none focus:ring-2 focus:ring-[#1a2df3] placeholder:text-[#1a2df3]/60 w-full ${
+                    className={`bg-[#e1e2f8] text-[#1a2df3] px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border-none outline-none focus:ring-2 focus:ring-[#1a2df3] placeholder:text-[#1a2df3]/60 w-full text-base ${
                       errors.lastName ? 'ring-2 ring-red-500 bg-red-50' : ''
                     }`}
                   />
                   {errors.lastName && (
-                    <p className="mt-1 text-sm text-red-600">{errors.lastName}</p>
+                    <p className="mt-1 text-xs text-red-600">{errors.lastName}</p>
                   )}
                   <ValidationError prefix="Last Name" field="lastName" errors={state.errors} />
                 </div>
               </div>
               <div>
+                <label htmlFor="volunteer-email" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                  Email <span className="text-red-500">*</span>
+                </label>
                 <input
                   type="email"
+                  id="volunteer-email"
                   name="email"
-                  placeholder="Email"
+                  placeholder="your@email.com"
                   value={formData.email}
                   onChange={handleEmailChange}
-                  className={`w-full bg-[#e1e2f8] text-[#1a2df3] px-4 py-3 rounded-lg border-none outline-none focus:ring-2 focus:ring-[#1a2df3] placeholder:text-[#1a2df3]/60 ${
+                  className={`w-full bg-[#e1e2f8] text-[#1a2df3] px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border-none outline-none focus:ring-2 focus:ring-[#1a2df3] placeholder:text-[#1a2df3]/60 text-base ${
                     errors.email ? 'ring-2 ring-red-500 bg-red-50' : ''
                   }`}
                 />
                 {errors.email && (
-                  <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+                  <p className="mt-1 text-xs text-red-600">{errors.email}</p>
                 )}
                 <ValidationError prefix="Email" field="email" errors={state.errors} />
               </div>
               <div>
+                <label htmlFor="volunteer-phone" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                  Phone Number <span className="text-red-500">*</span>
+                </label>
                 <input
                   type="tel"
+                  id="volunteer-phone"
                   name="phone"
-                  placeholder="Phone Number (e.g., (123) 456-7890)"
+                  placeholder="(123) 456-7890"
                   value={formData.phone}
                   onChange={handlePhoneChange}
                   pattern="[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}"
-                  className={`w-full bg-[#e1e2f8] text-[#1a2df3] px-4 py-3 rounded-lg border-none outline-none focus:ring-2 focus:ring-[#1a2df3] placeholder:text-[#1a2df3]/60 ${
+                  className={`w-full bg-[#e1e2f8] text-[#1a2df3] px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border-none outline-none focus:ring-2 focus:ring-[#1a2df3] placeholder:text-[#1a2df3]/60 text-base ${
                     errors.phone ? 'ring-2 ring-red-500 bg-red-50' : ''
                   }`}
                 />
                 {errors.phone && (
-                  <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
+                  <p className="mt-1 text-xs text-red-600">{errors.phone}</p>
                 )}
                 <ValidationError prefix="Phone" field="phone" errors={state.errors} />
               </div>
-              <div>
+              <div className="flex items-center justify-between pt-1">
                 <div className="flex items-center gap-2">
                   <input
                     type="checkbox"
@@ -234,29 +258,29 @@ export default function VolunteerForm() {
                         setErrors(newErrors);
                       }
                     }}
-                    className="w-4 h-4"
+                    className="w-5 h-5 cursor-pointer"
                   />
-                  <label htmlFor="adult" className={errors.isAdult ? 'text-red-600' : 'text-gray-700'}>
+                  <label htmlFor="adult" className={`text-sm ${errors.isAdult ? 'text-red-600' : 'text-gray-700'}`}>
                     I am 14+ years old
                   </label>
                 </div>
-                {errors.isAdult && (
-                  <p className="mt-1 text-sm text-red-600">{errors.isAdult}</p>
-                )}
+                <button
+                  type="submit"
+                  disabled={state.submitting}
+                  className="bg-[#0720ff] text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-semibold hover:bg-[#0618dd] active:bg-[#0515b8] transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
+                >
+                  {state.submitting ? 'Submitting...' : 'Submit'}
+                </button>
               </div>
-              <button
-                type="submit"
-                disabled={state.submitting}
-                className="bg-[#0720ff] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#0618dd] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {state.submitting ? 'Submitting...' : 'Submit'}
-              </button>
+              {errors.isAdult && (
+                <p className="text-xs text-red-600">{errors.isAdult}</p>
+              )}
             </form>
             )}
           </div>
 
-          {/* Make a Difference Sidebar */}
-          <div className="lg:w-80">
+          {/* Make a Difference Sidebar - Desktop only */}
+          <div className="hidden lg:block lg:w-80">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-1 h-8 bg-[#0720ff]"></div>
               <h3 className="text-2xl font-bold">Make a Difference!</h3>

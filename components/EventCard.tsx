@@ -24,7 +24,7 @@ export default function EventCard({
       </div>
       <div className="flex-1 p-4 sm:p-6 flex flex-col justify-center gap-3 sm:gap-4">
         <p className="text-gray-700 text-sm sm:text-base">{description}</p>
-        <div className="flex flex-wrap gap-3 sm:gap-4 items-center justify-start sm:justify-between">
+        <div className="flex gap-3 sm:gap-4 items-center justify-between">
           {learnMoreLink && (
             <Link
               href={learnMoreLink}
@@ -37,7 +37,7 @@ export default function EventCard({
           {showDonateButton && (
             <Link
               href="/donate"
-              className="bg-[#0720ff] text-white px-6 sm:px-8 py-2 sm:py-2.5 rounded-full font-semibold hover:bg-[#0618dd] transition-colors shadow-md sm:ml-auto text-sm sm:text-base"
+              className="bg-[#0720ff] text-white px-5 sm:px-8 py-2 sm:py-2.5 rounded-full font-semibold hover:bg-[#0618dd] active:bg-[#0515b8] transition-colors shadow-md text-sm sm:text-base"
             >
               Donate
             </Link>

@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import VideoGallery from '@/components/VideoGallery';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
@@ -16,15 +17,15 @@ export default function About() {
       <main className="pt-8 pb-8 sm:pt-12 sm:pb-12 md:pt-16 md:pb-16 px-4 flex-grow">
         <div className="container mx-auto max-w-6xl">
           {/* Page Heading */}
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 pb-2 border-b-4 border-[#0720ff] inline-block">
+          <h1 className="text-xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-8 pb-2 border-b-4 border-[#0720ff] inline-block">
             About
           </h1>
-          
+
           {/* Top Section - Two Images */}
           <section className="relative pt-0 pb-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-2 sm:gap-6">
               {/* Left Image */}
-              <div className="relative w-full h-[400px] rounded-lg overflow-hidden">
+              <div className="relative w-full h-[160px] sm:h-[300px] md:h-[400px] rounded-md sm:rounded-lg overflow-hidden">
                 <Image
                   src="/images/carousel-1.jpg"
                   alt="Car trunk filled with food boxes"
@@ -32,9 +33,9 @@ export default function About() {
                   className="object-cover"
                 />
               </div>
-              
+
               {/* Right Image */}
-              <div className="relative w-full h-[400px] rounded-lg overflow-hidden">
+              <div className="relative w-full h-[160px] sm:h-[300px] md:h-[400px] rounded-md sm:rounded-lg overflow-hidden">
                 <Image
                   src="/images/carousel-2.jpg"
                   alt="Stacks of packaged goods on sidewalk"
@@ -43,13 +44,13 @@ export default function About() {
                 />
               </div>
             </div>
-            
+
             {/* Blue Card Section with Video and Text/Button - Overlaying the images */}
-            <div className="relative z-20 -mt-24 px-4 flex justify-center">
-              <div className="bg-[#0720ff] rounded-[3rem] p-6 md:p-8 shadow-xl w-full max-w-[90%]">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+            <div className="relative z-20 -mt-6 sm:-mt-20 md:-mt-24 px-2 sm:px-4 flex justify-center">
+              <div className="bg-[#0720ff] rounded-lg sm:rounded-[3rem] p-2.5 sm:p-6 md:p-8 shadow-xl w-full max-w-[95%] sm:max-w-[90%]">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-6 items-center">
                 {/* Video Placeholder (Left) */}
-                <div className="relative w-full aspect-[16/7] rounded-lg overflow-hidden bg-gray-900">
+                <div className="relative w-full h-[120px] sm:h-auto sm:aspect-[16/7] rounded-md sm:rounded-lg overflow-hidden bg-gray-900">
                   <Image
                     src="/images/carousel-3.jpg"
                     alt="Video thumbnail"
@@ -58,21 +59,21 @@ export default function About() {
                   />
                   {/* Play Button Overlay */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center cursor-pointer hover:bg-white transition-colors">
-                      <div className="w-0 h-0 border-l-[12px] border-l-gray-900 border-t-[9px] border-t-transparent border-b-[9px] border-b-transparent ml-1"></div>
+                    <div className="w-10 h-10 sm:w-16 sm:h-16 bg-white/90 rounded-full flex items-center justify-center cursor-pointer hover:bg-white transition-colors">
+                      <div className="w-0 h-0 border-l-[8px] sm:border-l-[12px] border-l-gray-900 border-t-[6px] sm:border-t-[9px] border-t-transparent border-b-[6px] sm:border-b-[9px] border-b-transparent ml-0.5 sm:ml-1"></div>
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Text and Button (Right) */}
-                <div className="text-white space-y-4">
-                  <p className="text-lg md:text-xl leading-relaxed">
+                <div className="text-white space-y-1.5 sm:space-y-4">
+                  <p className="text-sm sm:text-lg md:text-xl leading-relaxed">
                     Putting food on someone's plate gives them the <strong>CHANCE</strong> for better.
                   </p>
-                  <div className="flex justify-center mt-8">
+                  <div className="flex justify-center mt-2 sm:mt-8">
                     <Link
                       href="/donate"
-                      className="inline-block bg-black text-white font-bold px-8 py-3 rounded-full hover:bg-gray-800 transition-colors text-sm"
+                      className="inline-block bg-black text-white font-bold px-5 sm:px-8 py-2 sm:py-3 rounded-full hover:bg-gray-800 active:bg-gray-700 transition-colors text-xs sm:text-sm"
                     >
                       DONATE
                     </Link>
@@ -86,12 +87,12 @@ export default function About() {
           </section>
 
           {/* Our Impact Section */}
-          <section className="pt-10 sm:pt-12 md:pt-16 pb-10 sm:pb-12 md:pb-16">
+          <section className="pt-7 sm:pt-12 md:pt-16 pb-10 sm:pb-12 md:pb-16">
             <div className="max-w-4xl mx-auto">
               {/* Heading with Blue Bar */}
               <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
                 <div className="w-1.5 sm:w-2 h-10 sm:h-12 bg-[#0720ff]"></div>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">Our Impact</h2>
+                <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900">Our Impact</h2>
               </div>
 
               {/* Body Text - spans from blue bar, centered */}
@@ -115,43 +116,7 @@ export default function About() {
           </section>
 
           {/* Video Gallery Section */}
-          <section className="pb-10 sm:pb-12 md:pb-16">
-            {/* Section Titles */}
-            <div className="flex justify-between items-center mb-4 sm:mb-6">
-              <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Videos</h3>
-            </div>
-            
-            {/* Video Grid - 3x2 */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                '/images/carousel-1.jpg',
-                '/images/carousel-2.jpg',
-                '/images/carousel-3.jpg',
-                '/images/feed-homeless-bg.png',
-                '/images/happy-family.jpg',
-                '/images/carousel-1.jpg'
-              ].map((imageSrc, index) => (
-                <div key={index} className="relative w-full aspect-video rounded-lg overflow-hidden bg-gray-900">
-                  <Image
-                    src={imageSrc}
-                    alt={`Video ${index + 1} thumbnail`}
-                    fill
-                    className="object-cover"
-                  />
-                  {/* Duration Overlay */}
-                  <div className="absolute bottom-2 right-2 bg-black/70 text-white text-sm px-2 py-1 rounded">
-                    {index === 0 ? '00:21' : index === 1 ? '00:24' : index === 2 ? '00:08' : index === 3 ? '00:10' : index === 4 ? '00:40' : '00:15'}
-                  </div>
-                  {/* Play Button Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                    <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center cursor-pointer">
-                      <div className="w-0 h-0 border-l-[14px] border-l-gray-900 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent ml-1"></div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
+          <VideoGallery />
         </div>
       </main>
       <Footer className="mt-auto" />
