@@ -39,12 +39,8 @@ export default function ZeffyDonationForm() {
 
   return (
     <div className="w-full">
-      <div 
-        className="relative overflow-hidden w-full rounded-lg"
-        style={{ 
-          height: '900px',
-          minHeight: '450px'
-        }}
+      <div
+        className="relative overflow-hidden w-full rounded-lg h-[550px] sm:h-[700px] md:h-[900px]"
       >
         <iframe
           ref={iframeRef}

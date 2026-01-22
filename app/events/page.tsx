@@ -14,10 +14,10 @@ export default function Events() {
   return (
     <div className="min-h-screen bg-[#f7f7f7] flex flex-col">
       <Header />
-      <main className="py-16 px-4 flex-grow">
+      <main className="py-8 sm:py-12 md:py-16 px-4 flex-grow">
         <div className="container mx-auto max-w-6xl">
           <EventsPageClient />
-          <h1 className="text-4xl font-bold mb-8 pb-2 border-b-4 border-[#0720ff] inline-block">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 pb-2 border-b-4 border-[#0720ff] inline-block">
             Events
           </h1>
           <div className="space-y-8">

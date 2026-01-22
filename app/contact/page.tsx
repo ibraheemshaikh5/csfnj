@@ -14,9 +14,9 @@ export default function Contact() {
   return (
     <div className="min-h-screen bg-[#f7f7f7] flex flex-col">
       <Header />
-      <main className="pt-16 pb-16 px-4 flex-grow">
+      <main className="pt-8 pb-8 sm:pt-12 sm:pb-12 md:pt-16 md:pb-16 px-4 flex-grow">
         <div className="container mx-auto max-w-6xl">
-          <h1 className="text-4xl font-bold mb-8 pb-2 border-b-4 border-[#0720ff] inline-block">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 pb-2 border-b-4 border-[#0720ff] inline-block">
             Contact
           </h1>
 
@@ -32,15 +32,15 @@ export default function Contact() {
                 </p>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 {/* Phone Call Option */}
                 <a
                   href={`tel:${phoneNumber}`}
-                  className="flex items-center gap-4 p-6 bg-[#f7f7f7] rounded-xl hover:bg-gray-100 transition-colors group"
+                  className="flex items-center gap-3 sm:gap-4 p-4 sm:p-6 bg-[#f7f7f7] rounded-xl hover:bg-gray-100 transition-colors group"
                 >
-                  <div className="w-14 h-14 bg-[#0720ff] rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#0720ff] rounded-full flex items-center justify-center flex-shrink-0">
                     <svg
-                      className="w-7 h-7 text-white"
+                      className="w-6 h-6 sm:w-7 sm:h-7 text-white"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -54,10 +54,10 @@ export default function Contact() {
                     </svg>
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm font-medium text-gray-500 uppercase tracking-wide">
+                    <p className="text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wide">
                       Call Us
                     </p>
-                    <p className="text-2xl font-bold text-gray-900 group-hover:text-[#0720ff] transition-colors">
+                    <p className="text-xl sm:text-2xl font-bold text-gray-900 group-hover:text-[#0720ff] transition-colors">
                       {formattedPhone}
                     </p>
                   </div>
@@ -81,11 +81,11 @@ export default function Contact() {
                   href={`https://wa.me/${phoneNumber}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-6 bg-[#f7f7f7] rounded-xl hover:bg-gray-100 transition-colors group"
+                  className="flex items-center gap-3 sm:gap-4 p-4 sm:p-6 bg-[#f7f7f7] rounded-xl hover:bg-gray-100 transition-colors group"
                 >
-                  <div className="w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#25D366] rounded-full flex items-center justify-center flex-shrink-0">
                     <svg
-                      className="w-8 h-8 text-white"
+                      className="w-7 h-7 sm:w-8 sm:h-8 text-white"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >

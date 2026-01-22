@@ -52,7 +52,7 @@ export default function Carousel() {
   };
 
   return (
-    <section className="relative w-full h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden bg-gray-900">
+    <section className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden bg-gray-900">
       {/* Images */}
       {slides.map((slide, index) => (
         <div
@@ -75,8 +75,8 @@ export default function Carousel() {
       <div className="absolute inset-0 bg-black/10 z-10" />
 
       {/* Persistent haze behind text - sized to cover the text area */}
-      <div className="absolute top-16 left-8 md:top-24 md:left-12 lg:top-32 lg:left-16 z-15 w-[90%] max-w-3xl h-auto">
-        <div className="backdrop-blur-[2px] bg-gradient-to-r from-black/20 via-black/15 to-transparent p-8 rounded-lg">
+      <div className="absolute top-12 left-4 sm:top-16 sm:left-8 md:top-24 md:left-12 lg:top-32 lg:left-16 z-10 w-[95%] sm:w-[90%] max-w-3xl h-auto">
+        <div className="backdrop-blur-[2px] bg-gradient-to-r from-black/20 via-black/15 to-transparent p-4 sm:p-8 rounded-lg">
           <div className="bg-gradient-to-b from-black/10 via-black/5 to-transparent rounded-lg">
             <div className="h-[120px] md:h-[150px] lg:h-[180px]"></div>
           </div>
@@ -87,15 +87,15 @@ export default function Carousel() {
       {slides.map((slide, index) => (
         <div
           key={`text-${index}`}
-          className={`absolute inset-0 z-20 transition-opacity duration-1000 ease-in-out flex flex-col items-start justify-start pt-16 pl-8 md:pt-24 md:pl-12 lg:pt-32 lg:pl-16 ${
+          className={`absolute inset-0 z-20 transition-opacity duration-1000 ease-in-out flex flex-col items-start justify-start pt-12 pl-4 sm:pt-16 sm:pl-8 md:pt-24 md:pl-12 lg:pt-32 lg:pl-16 ${
             index === currentIndex ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          <div className="px-8 py-6 max-w-3xl">
-            <h1 className="text-white font-bold text-4xl md:text-5xl lg:text-6xl mb-3 md:mb-4 drop-shadow-2xl text-left">
+          <div className="px-4 sm:px-8 py-4 sm:py-6 max-w-3xl">
+            <h1 className="text-white font-bold text-2xl sm:text-4xl md:text-5xl lg:text-6xl mb-2 sm:mb-3 md:mb-4 drop-shadow-2xl text-left">
               {slide.title}
             </h1>
-            <p className="text-white text-lg md:text-xl lg:text-2xl drop-shadow-xl font-light max-w-2xl text-left">
+            <p className="text-white text-base sm:text-lg md:text-xl lg:text-2xl drop-shadow-xl font-light max-w-2xl text-left">
               {slide.subtitle}
             </p>
           </div>
@@ -104,19 +104,19 @@ export default function Carousel() {
 
       {/* Left hover area for Previous Button */}
       <div
-        className="absolute left-0 top-0 bottom-0 w-24 z-40 flex items-center justify-start pl-6"
+        className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 z-40 flex items-center justify-start pl-2 sm:pl-6"
         onMouseEnter={() => setShowLeftButton(true)}
         onMouseLeave={() => setShowLeftButton(false)}
       >
         <button
           onClick={handlePrev}
-          className={`transition-all ${
-            showLeftButton ? 'opacity-100' : 'opacity-0'
+          className={`transition-all p-2 rounded-full bg-black/20 sm:bg-transparent hover:bg-black/30 ${
+            showLeftButton ? 'opacity-100' : 'opacity-70 sm:opacity-0'
           }`}
           aria-label="Previous slide"
         >
           <svg
-            className="w-10 h-10 text-white drop-shadow-lg"
+            className="w-8 h-8 sm:w-10 sm:h-10 text-white drop-shadow-lg"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -133,19 +133,19 @@ export default function Carousel() {
 
       {/* Right hover area for Next Button */}
       <div
-        className="absolute right-0 top-0 bottom-0 w-24 z-40 flex items-center justify-end pr-6"
+        className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 z-40 flex items-center justify-end pr-2 sm:pr-6"
         onMouseEnter={() => setShowRightButton(true)}
         onMouseLeave={() => setShowRightButton(false)}
       >
         <button
           onClick={handleNext}
-          className={`transition-all ${
-            showRightButton ? 'opacity-100' : 'opacity-0'
+          className={`transition-all p-2 rounded-full bg-black/20 sm:bg-transparent hover:bg-black/30 ${
+            showRightButton ? 'opacity-100' : 'opacity-70 sm:opacity-0'
           }`}
           aria-label="Next slide"
         >
           <svg
-            className="w-10 h-10 text-white drop-shadow-lg"
+            className="w-8 h-8 sm:w-10 sm:h-10 text-white drop-shadow-lg"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

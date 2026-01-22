@@ -14,10 +14,10 @@ export default function Donate() {
   return (
     <div className="min-h-screen bg-[#f7f7f7] flex flex-col">
       <Header />
-      <main className="pt-16 pb-16 px-4 flex-grow">
+      <main className="pt-8 pb-8 sm:pt-12 sm:pb-12 md:pt-16 md:pb-16 px-4 flex-grow">
         <div className="container mx-auto max-w-6xl">
           <DonatePageClient />
-          <h1 className="text-4xl font-bold mb-8 pb-2 border-b-4 border-[#0720ff] inline-block">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 pb-2 border-b-4 border-[#0720ff] inline-block">
             Donate
           </h1>
           <div className="bg-white rounded-lg shadow-sm p-8">

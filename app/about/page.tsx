@@ -13,10 +13,10 @@ export default function About() {
   return (
     <div className="min-h-screen bg-[#f7f7f7] flex flex-col">
       <Header />
-      <main className="pt-16 pb-16 px-4 flex-grow">
+      <main className="pt-8 pb-8 sm:pt-12 sm:pb-12 md:pt-16 md:pb-16 px-4 flex-grow">
         <div className="container mx-auto max-w-6xl">
           {/* Page Heading */}
-          <h1 className="text-4xl font-bold mb-8 pb-2 border-b-4 border-[#0720ff] inline-block">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 pb-2 border-b-4 border-[#0720ff] inline-block">
             About
           </h1>
           
@@ -86,26 +86,26 @@ export default function About() {
           </section>
 
           {/* Our Impact Section */}
-          <section className="pt-16 pb-16">
+          <section className="pt-10 sm:pt-12 md:pt-16 pb-10 sm:pb-12 md:pb-16">
             <div className="max-w-4xl mx-auto">
               {/* Heading with Blue Bar */}
-              <div className="flex items-center gap-4 mb-8">
-                <div className="w-2 h-12 bg-[#0720ff]"></div>
-                <h2 className="text-4xl font-bold text-gray-900">Our Impact</h2>
+              <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
+                <div className="w-1.5 sm:w-2 h-10 sm:h-12 bg-[#0720ff]"></div>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">Our Impact</h2>
               </div>
-              
+
               {/* Body Text - spans from blue bar, centered */}
               <div className="flex">
-                <div className="w-2 mr-4"></div>
+                <div className="w-1.5 sm:w-2 mr-3 sm:mr-4"></div>
                 <div className="flex-1">
-                  <p className="text-gray-700 text-lg leading-relaxed mb-6 text-center">
+                  <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-4 sm:mb-6 text-center">
                     Our volunteers donate hundreds of hours of their time to create meals in a chain of steps. Putting stickers on a bag, putting cheese on bread, cutting the meat, or placing necessities including masks, water, and utensils in the bag, all of our volunteers care deeply about the program and change lives! Please check out the videos below and the events page to see everything we have done!
                   </p>
-                  
+
                   {/* View Events Link - Left aligned to O in Our Impact */}
                   <Link
                     href="/events"
-                    className="text-[#0720ff] font-semibold hover:underline inline-flex items-center gap-1"
+                    className="text-[#0720ff] font-semibold hover:underline inline-flex items-center gap-1 text-sm sm:text-base"
                   >
                     View Events <span>&gt;</span>
                   </Link>
@@ -115,10 +115,10 @@ export default function About() {
           </section>
 
           {/* Video Gallery Section */}
-          <section className="pb-16">
+          <section className="pb-10 sm:pb-12 md:pb-16">
             {/* Section Titles */}
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="text-xl font-semibold text-gray-900">Videos</h3>
+            <div className="flex justify-between items-center mb-4 sm:mb-6">
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Videos</h3>
             </div>
             
             {/* Video Grid - 3x2 */}

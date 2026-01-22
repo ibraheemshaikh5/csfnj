@@ -58,15 +58,34 @@ export default function ImpactGrid() {
     ]
   ];
 
+  // Flatten the table data for mobile card layout
+  const allItems = tableData.flat();
+
   return (
     <section className="pt-0 pb-8 px-4 bg-[#f7f7f7]">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold pb-2 border-b-4 border-[#0720ff] inline-block">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl font-bold pb-2 border-b-4 border-[#0720ff] inline-block">
             Your Donations at Work
           </h2>
         </div>
-        <div className="mt-12 overflow-x-auto">
+
+        {/* Mobile: Card Grid Layout */}
+        <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4 md:hidden">
+          {allItems.map((item, index) => (
+            <div key={index} className="bg-white rounded-lg p-4 shadow-sm">
+              <h3 className="font-bold text-base mb-2 text-gray-900">{item.heading}</h3>
+              {item.description.map((desc, descIndex) => (
+                <p key={descIndex} className="text-gray-700 text-sm mb-1 last:mb-0">
+                  {desc}
+                </p>
+              ))}
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop: Table Layout */}
+        <div className="mt-12 overflow-x-auto hidden md:block">
           <table className="w-full border-collapse">
             <tbody>
               {tableData.map((row, rowIndex) => (

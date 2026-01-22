@@ -46,7 +46,7 @@ export default function Header() {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-gray-900"
+          className="md:hidden text-gray-900 p-2 -mr-2 rounded-lg hover:bg-gray-100 transition-colors"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
         >

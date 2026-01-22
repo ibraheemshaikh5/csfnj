@@ -39,17 +39,17 @@ export default function EventDetail({ params }: { params: { slug: string } }) {
   return (
     <div className="min-h-screen bg-[#f7f7f7] flex flex-col">
       <Header />
-      <main className="py-16 px-4 flex-grow">
+      <main className="py-8 sm:py-12 md:py-16 px-4 flex-grow">
         <div className="container mx-auto max-w-6xl">
-          <Link 
-            href="/events" 
-            className="text-[#0720ff] font-semibold hover:underline inline-flex items-center gap-1 mb-6"
+          <Link
+            href="/events"
+            className="text-[#0720ff] font-semibold hover:underline inline-flex items-center gap-1 mb-4 sm:mb-6"
           >
             ← Back to Events
           </Link>
           <EventDetailClient slug={params.slug} />
-          <h1 className="text-4xl font-bold mb-8 text-gray-900">{event.title}</h1>
-          <div className="bg-white rounded-lg shadow-sm p-8 space-y-6">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-gray-900">{event.title}</h1>
+          <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6">
             <p className="text-gray-700 text-lg leading-relaxed">
               {event.description}
             </p>
