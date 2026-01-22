@@ -8,6 +8,8 @@ A modern, responsive website for Care & Share Foundation, a New Jersey-based cha
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **Forms**: [Formspree](https://formspree.io/) for form submissions
+- **Analytics**: [Vercel Analytics](https://vercel.com/analytics) for web analytics and event tracking
+- **Performance**: [Vercel Speed Insights](https://vercel.com/docs/speed-insights) for Web Vitals and performance monitoring
 - **Image Optimization**: Next.js Image component
 - **Fonts**: Google Fonts (Poppins, Inter)
 
@@ -22,6 +24,8 @@ A modern, responsive website for Care & Share Foundation, a New Jersey-based cha
 - **Image Optimization**: Automatic image optimization with Next.js Image component
 - **Donation Integration**: Zeffy donation form integration
 - **Payment Methods**: Support for Venmo, Zelle, and check payments
+- **Analytics & Monitoring**: Comprehensive tracking of page views, form submissions, event interactions, and donation engagement
+- **Performance Monitoring**: Real user monitoring with Web Vitals tracking
 
 ## Pages
 
@@ -115,6 +119,30 @@ The forms are pre-configured with Formspree endpoints:
 To update form endpoints, modify the form IDs in:
 - `components/VolunteerForm.tsx`
 - `components/ContactForm.tsx`
+
+## Analytics & Performance
+
+The website uses **Vercel Analytics** and **Vercel Speed Insights** for comprehensive tracking and monitoring:
+
+### Vercel Analytics
+Tracks the following events:
+- **Page Views**: Automatically tracked for all pages via `<Analytics />` component in root layout
+- **Form Submissions**: Custom events tracked when forms are successfully submitted
+  - `form_submission` with `form_type: 'volunteer'` (Volunteer Registration Form)
+  - `form_submission` with `form_type: 'contact'` (Contact Form)
+- **Event Views**: Tracks when users view event pages
+  - `event_view` with `event_type: 'listing'` (Events listing page)
+  - `event_view` with `event_type: 'detail'` and `event_slug` (Individual event pages)
+- **Donation Tracking**:
+  - `donation_page_view` (Donate page views)
+  - `donation_form_interaction` with `form_type: 'zeffy'` (User interaction with Zeffy donation form)
+
+### Vercel Speed Insights
+- Automatically collects Core Web Vitals (LCP, FID, CLS, etc.)
+- Real user monitoring (RUM) for performance metrics
+- Tracks page load performance and user experience metrics
+
+Both analytics tools are integrated in `app/layout.tsx` and work automatically when deployed to Vercel.
 
 ## Styling
 

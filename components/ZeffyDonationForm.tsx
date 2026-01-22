@@ -50,7 +50,6 @@ export default function ZeffyDonationForm() {
           ref={iframeRef}
           title="Donation form powered by Zeffy"
           src="https://www.zeffy.com/embed/donation-form/care-and-share-foundation-donations"
-          {...({ allowPaymentRequest: true, allowTransparency: true } as React.IframeHTMLAttributes<HTMLIFrameElement>)}
           className="absolute border-0 w-full h-full"
           style={{
             position: 'absolute',
@@ -62,6 +61,10 @@ export default function ZeffyDonationForm() {
             width: '100%',
             height: '100%'
           }}
+          {...({
+            allowpaymentrequest: 'true',
+            allowtransparency: 'true',
+          } as React.HTMLAttributes<HTMLIFrameElement>)}
         />
       </div>
     </div>
