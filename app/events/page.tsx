@@ -17,7 +17,7 @@ export default function Events() {
       <main className="py-16 px-4 flex-grow">
         <div className="container mx-auto max-w-6xl">
           <EventsPageClient />
-          <h1 className="text-4xl font-bold mb-2 pb-2 border-b-4 border-[#0720ff] inline-block mb-12">
+          <h1 className="text-4xl font-bold mb-8 pb-2 border-b-4 border-[#0720ff] inline-block">
             Events
           </h1>
           <div className="space-y-8">

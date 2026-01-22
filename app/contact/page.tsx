@@ -14,15 +14,15 @@ export default function Contact() {
   return (
     <div className="min-h-screen bg-[#f7f7f7] flex flex-col">
       <Header />
-      <main className="pt-16 pb-8 px-4 flex-grow">
+      <main className="pt-16 pb-16 px-4 flex-grow">
         <div className="container mx-auto max-w-6xl">
-          <h1 className="text-4xl font-bold mb-2 pb-2 border-b-4 border-[#0720ff] inline-block mb-12">
+          <h1 className="text-4xl font-bold mb-8 pb-2 border-b-4 border-[#0720ff] inline-block">
             Contact
           </h1>
 
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
-              <div className="text-center mb-8">
+          <div className="max-w-[940px] mx-auto">
+            <div className="bg-white rounded-lg shadow-lg p-6 md:p-8">
+              <div className="text-center mb-6">
                 <h2 className="text-2xl font-semibold text-gray-900 mb-4">
                   Get in Touch
                 </h2>
@@ -32,7 +32,7 @@ export default function Contact() {
                 </p>
               </div>
 
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {/* Phone Call Option */}
                 <a
                   href={`tel:${phoneNumber}`}
@@ -116,7 +116,7 @@ export default function Contact() {
                 </a>
               </div>
 
-              <p className="text-center text-gray-500 text-sm mt-8">
+              <p className="text-center text-gray-500 text-sm mt-6">
                 We typically respond within 24 hours
               </p>
             </div>

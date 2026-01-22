@@ -44,7 +44,7 @@ export default function Home() {
           </div>
         </div>
         {/* Grey background fills the space below the card */}
-        <div className="absolute inset-x-0 bottom-0 top-32 bg-[#f7f7f7] -z-10"></div>
+        <div className="absolute inset-x-0 bottom-0 top-0 bg-[#f7f7f7] -z-10"></div>
       </section>
 
       {/* Changing Lives Section */}
