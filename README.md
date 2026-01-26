@@ -4,7 +4,7 @@ A modern, responsive website for Care & Share Foundation, a New Jersey-based cha
 
 ## Tech Stack
 
-- **Framework**: [Next.js 14+](https://nextjs.org/) (App Router)
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **Forms**: [Formspree](https://formspree.io/) for form submissions
