@@ -11,8 +11,14 @@ import { notFound } from 'next/navigation';
 export const revalidate = 0;
 
 export async function generateStaticParams() {
-  const slugs = await getAllEventSlugs();
-  return slugs.map((row) => ({ slug: row.slug }));
+  try {
+    const slugs = await getAllEventSlugs();
+    return slugs.map((row) => ({ slug: row.slug }));
+  } catch {
+    // Database not available during build (e.g., on Vercel)
+    // Pages will be generated on-demand instead
+    return [];
+  }
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
