@@ -1,40 +1,40 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import Image from 'next/image';
 import EventDetailClient from './EventDetailClient';
 import type { Metadata } from 'next';
+import { getEventBySlug, getAllEventSlugs } from '@/db/queries';
+import { notFound } from 'next/navigation';
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const eventTitles: Record<string, string> = {
-    'food-packaging': 'Food Packaging Event - Care & Share Foundation',
-    'ramadan-iftar': 'Ramadan Iftar 2025 - Care & Share Foundation',
-  };
+export async function generateStaticParams() {
+  const slugs = await getAllEventSlugs();
+  return slugs.map((row) => ({ slug: row.slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const event = await getEventBySlug(slug);
+
+  if (!event) {
+    return {
+      title: 'Event Not Found - Care & Share Foundation',
+    };
+  }
 
   return {
-    title: eventTitles[params.slug] || 'Event - Care & Share Foundation',
-    description: 'Learn more about this Care & Share Foundation event.',
+    title: `${event.title} - Care & Share Foundation`,
+    description: event.description,
   };
 }
 
-export default function EventDetail({ params }: { params: { slug: string } }) {
-  const eventData: Record<string, { title: string; description: string; imageAlt: string }> = {
-    'food-packaging': {
-      title: 'Food Packaging Event',
-      description: 'Every other week CSFNJ holds an event where volunteers package and distribute 750+ meals across central New Jersey! This is a bi-weekly event that brings together community members to prepare and package meals for those in need.',
-      imageAlt: 'Food packaging event - Volunteers packaging meals',
-    },
-    'ramadan-iftar': {
-      title: 'Ramadan 2025 Iftar',
-      description: 'Ramadan 2025 CSFNJ is distributing 250 iftaar meals every Tuesday and Friday! CSFNJ is also hosting a clothing and toy drive for Eid. Donate now to help support this important initiative during the holy month.',
-      imageAlt: 'Ramadan 2025 Iftar - 250 Iftar Meals',
-    },
-  };
+export default async function EventDetail({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const event = await getEventBySlug(slug);
 
-  const event = eventData[params.slug] || {
-    title: 'Event',
-    description: 'Event details coming soon.',
-    imageAlt: 'Event',
-  };
+  if (!event) {
+    notFound();
+  }
 
   return (
     <div className="min-h-screen bg-[#f7f7f7] flex flex-col">
@@ -47,13 +47,56 @@ export default function EventDetail({ params }: { params: { slug: string } }) {
           >
             ← Back to Events
           </Link>
-          <EventDetailClient slug={params.slug} />
+          <EventDetailClient slug={slug} />
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-gray-900">{event.title}</h1>
+
+          {/* Thumbnail Image */}
+          {event.thumbnailUrl && (
+            <div className="relative w-full h-64 sm:h-80 md:h-96 rounded-lg overflow-hidden mb-6 sm:mb-8">
+              <Image
+                src={event.thumbnailUrl}
+                alt={event.thumbnailAlt || event.title}
+                fill
+                className="object-cover"
+              />
+            </div>
+          )}
+
           <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6">
             <p className="text-gray-700 text-lg leading-relaxed">
-              {event.description}
+              {event.fullDescription || event.description}
             </p>
+
+            {event.showDonateButton && (
+              <div className="pt-4">
+                <Link
+                  href="/donate"
+                  className="inline-block bg-[#0720ff] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#0618dd] active:bg-[#0515b8] transition-colors shadow-md"
+                >
+                  Donate to Support This Event
+                </Link>
+              </div>
+            )}
           </div>
+
+          {/* Content Images Gallery */}
+          {event.contentImages && event.contentImages.length > 0 && (
+            <div className="mt-8 sm:mt-12">
+              <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-gray-900">Event Gallery</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {event.contentImages.map((imageUrl, index) => (
+                  <div key={index} className="relative h-48 sm:h-56 rounded-lg overflow-hidden">
+                    <Image
+                      src={imageUrl}
+                      alt={`${event.title} - Image ${index + 1}`}
+                      fill
+                      className="object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </main>
       <Footer className="mt-auto" />
