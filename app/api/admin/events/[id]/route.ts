@@ -103,11 +103,19 @@ export async function PUT(
     updateData.eventDate = eventDate ? new Date(eventDate) : null
   }
 
-  const [updated] = await db
-    .update(events)
-    .set(updateData)
-    .where(eq(events.id, parsedId))
-    .returning()
+  let updated
+  try {
+    ;[updated] = await db
+      .update(events)
+      .set(updateData)
+      .where(eq(events.id, parsedId))
+      .returning()
+  } catch (err: unknown) {
+    if (err && typeof err === 'object' && 'code' in err && err.code === '23505') {
+      return NextResponse.json({ error: 'Slug already exists' }, { status: 409 })
+    }
+    throw err
+  }
 
   if (!updated) {
     return NextResponse.json({ error: 'Not found' }, { status: 404 })
