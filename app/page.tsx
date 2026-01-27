@@ -7,12 +7,22 @@ import ImpactGrid from '@/components/ImpactGrid';
 import EventCard from '@/components/EventCard';
 import ActivityCard from '@/components/ActivityCard';
 import Footer from '@/components/Footer';
+import { getImpactItems, getOngoingEvents, getRecentEvents } from '@/db/queries';
 
-export default function Home() {
+// Don't cache this page - always fetch fresh data
+export const dynamic = 'force-dynamic';
+
+export default async function Home() {
+  const [impactItems, ongoingEvents, recentEvents] = await Promise.all([
+    getImpactItems(),
+    getOngoingEvents(),
+    getRecentEvents(),
+  ]);
+
   return (
     <div className="min-h-screen flex flex-col">
       <HomeHeader />
-      
+
       <Carousel />
 
       {/* Help Support Our Community Section */}
@@ -65,71 +75,39 @@ export default function Home() {
 
       <VolunteerForm />
 
-      <ImpactGrid />
+      <ImpactGrid items={impactItems} />
 
       {/* Ongoing Events Section */}
-      <section className="pt-4 sm:pt-8 pb-0 px-4 bg-[#f7f7f7]">
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="text-xl sm:text-3xl font-bold mb-2 pb-2 border-b-4 border-[#0720ff] inline-block">
-            Ongoing Events
-          </h2>
-          <div className="mt-8 sm:mt-12 space-y-6 sm:space-y-8">
-            <EventCard
-              image=""
-              imageAlt="Food packaging event - Volunteers packaging meals"
-              description="Every other week CSFNJ holds an event where volunteers package and distribute 750+ meals across central New Jersey!"
-              learnMoreLink="/events/food-packaging"
-              showDonateButton={true}
-            />
-            <EventCard
-              image=""
-              imageAlt="Ramadan 2025 Iftar - 250 Iftar Meals"
-              description="Ramadan 2025 CSFNJ is distributing 250 iftaar meals every Tuesday and Friday! CSFNJ is also hosting a clothing and toy drive for Eid. Donate now to help!"
-              learnMoreLink="/events/ramadan-iftar"
-              showDonateButton={true}
-            />
+      {ongoingEvents.length > 0 && (
+        <section className="pt-4 sm:pt-8 pb-0 px-4 bg-[#f7f7f7]">
+          <div className="container mx-auto max-w-6xl">
+            <h2 className="text-xl sm:text-3xl font-bold mb-2 pb-2 border-b-4 border-[#0720ff] inline-block">
+              Ongoing Events
+            </h2>
+            <div className="mt-8 sm:mt-12 space-y-6 sm:space-y-8">
+              {ongoingEvents.map((event) => (
+                <EventCard key={event.id} event={event} />
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Recent Events Section */}
-      <section className="pt-8 sm:pt-12 md:pt-16 pb-8 sm:pb-12 md:pb-16 px-4 bg-[#f7f7f7]">
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="text-xl sm:text-3xl font-bold mb-2 pb-2 border-b-4 border-[#0720ff] inline-block">
-            Recent Events
-          </h2>
-          <div className="mt-8 sm:mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-            <ActivityCard
-              image=""
-              imageAlt="Ramadan Care 2025 - Care packages distribution"
-              title="Ramadan Care 2025"
-              description="Distributed care packages to families in need during Ramadan 2025, ensuring they have essential groceries and supplies for the holy month."
-              learnMoreLink="#"
-            />
-            <ActivityCard
-              image=""
-              imageAlt="Grocery Pantries/Distributions - Fresh produce"
-              title="Grocery Pantries/Distributions"
-              description="Organized multiple grocery distribution events, providing fresh produce and essential food items to families across Central New Jersey."
-              learnMoreLink="#"
-            />
-            <ActivityCard
-              image=""
-              imageAlt="Eid Giveaway 2024 - Celebration event"
-              title="Eid Giveaway 2024"
-              description="Celebrated Eid with our community by organizing a special giveaway event, bringing joy and essential items to families during the festive season."
-              learnMoreLink="#"
-            />
-            <ActivityCard
-              image=""
-              imageAlt="Refugee Donation Drives - Community support"
-              title="Refugee Donation Drives"
-              description="Conducted multiple donation drives to support refugee families, providing food, clothing, and essential supplies to help them settle in their new communities."
-              learnMoreLink="#"
-            />
+      {recentEvents.length > 0 && (
+        <section className="pt-8 sm:pt-12 md:pt-16 pb-8 sm:pb-12 md:pb-16 px-4 bg-[#f7f7f7]">
+          <div className="container mx-auto max-w-6xl">
+            <h2 className="text-xl sm:text-3xl font-bold mb-2 pb-2 border-b-4 border-[#0720ff] inline-block">
+              Recent Events
+            </h2>
+            <div className="mt-8 sm:mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+              {recentEvents.map((event) => (
+                <ActivityCard key={event.id} event={event} />
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <Footer className="mt-auto" />
     </div>
