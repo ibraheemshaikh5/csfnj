@@ -7,6 +7,9 @@ import type { Metadata } from 'next';
 import { getEventBySlug, getAllEventSlugs } from '@/db/queries';
 import { notFound } from 'next/navigation';
 
+// Revalidate on every request
+export const revalidate = 0;
+
 export async function generateStaticParams() {
   const slugs = await getAllEventSlugs();
   return slugs.map((row) => ({ slug: row.slug }));

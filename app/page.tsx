@@ -9,6 +9,9 @@ import ActivityCard from '@/components/ActivityCard';
 import Footer from '@/components/Footer';
 import { getImpactItems, getOngoingEvents, getRecentEvents } from '@/db/queries';
 
+// Don't cache this page - always fetch fresh data
+export const dynamic = 'force-dynamic';
+
 export default async function Home() {
   const [impactItems, ongoingEvents, recentEvents] = await Promise.all([
     getImpactItems(),

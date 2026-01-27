@@ -5,6 +5,9 @@ import EventsPageClient from './EventsPageClient';
 import type { Metadata } from 'next';
 import { getAllEvents } from '@/db/queries';
 
+// Don't cache this page - always fetch fresh data
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Events - Care & Share Foundation',
   description: 'View all upcoming and past events organized by Care & Share Foundation.',
